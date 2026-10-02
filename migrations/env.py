@@ -1,13 +1,13 @@
 import asyncio
 from logging.config import fileConfig
 
-import app.render.models  # noqa: F401
 from alembic import context
 from alembic.runtime.environment import NameFilterParentNames, NameFilterType
 from sqlalchemy import URL, pool, text
 from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import create_async_engine
 
+import app.render.models  # noqa: F401
 from app.core.config import settings
 from app.core.models import SCHEMA, Base
 
