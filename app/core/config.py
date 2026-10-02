@@ -15,6 +15,14 @@ class RedisSettings(BaseModel):
         return f"redis://:{password}@{self.host}:{self.port}/0"
 
 
+class S3Settings(BaseModel):
+    endpoint_url: str = "http://localhost:3900"
+    region: str = "garage"
+    access_key_id: str
+    secret_access_key: SecretStr
+    bucket: str
+
+
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
         env_file=".env",
@@ -28,6 +36,7 @@ class Settings(BaseSettings):
     debug: bool = False
 
     redis: RedisSettings
+    s3: S3Settings
 
 
-settings = Settings()
+settings = Settings()  # pyright: ignore[reportCallIssue]  # required fields are loaded from the environment

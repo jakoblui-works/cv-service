@@ -33,9 +33,18 @@ jobs:
           cache-to: type=gha,mode=max
       - name: Smoke test image
         run: >
-          docker run --rm -e REDIS__PASSWORD=x
-          ghcr.io/jakoblui-works/cv-service:${{ github.sha }}
-          sh -c "python -c 'import app.core.broker, app.health.tasks' && xelatex --version && fc-list | grep -qi heros && python -m scripts.smoke_check"
+          docker run --rm \
+            -e REDIS__PASSWORD=x \
+            -e S3__ENDPOINT_URL=http://localhost:3900 \
+            -e S3__ACCESS_KEY_ID=x \
+            -e S3__SECRET_ACCESS_KEY=x \
+            -e S3__BUCKET=x \
+            -e DATABASE__HOST=localhost \
+            -e DATABASE__USER=postgres \
+            -e DATABASE__PASSWORD=postgres \
+            -e DATABASE__NAME=site_db \
+            ghcr.io/jakoblui-works/cv-service:${{ github.sha }} \
+            sh -c "python -c 'import app.core.broker, app.health.tasks' && xelatex --version && fc-list | grep -qi heros && python -m scripts.smoke_check"
       - name: Push
         uses: docker/build-push-action@v7
         with:
