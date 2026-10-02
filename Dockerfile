@@ -33,7 +33,7 @@ RUN uv sync --locked --no-dev
 
 COPY ./app ./app
 
-COPY scripts/smoke_test.py ./scripts/smoke_test.py
+COPY scripts/smoke_check.py ./scripts/smoke_check.py
 
 ENV PATH="/app/.venv/bin:$PATH"
 

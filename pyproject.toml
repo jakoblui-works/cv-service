@@ -23,6 +23,7 @@ asyncio_mode = "strict"
 asyncio_default_fixture_loop_scope = "function"
 addopts = "--import-mode=importlib"
 pythonpath = ["."]
+testpaths = ["tests"]
 
 [tool.uv]
 required-version = ">=0.12.21"
