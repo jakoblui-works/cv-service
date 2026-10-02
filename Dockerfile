@@ -5,17 +5,18 @@ RUN apt-get update \
  && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
+ARG CTAN_MIRROR=https://mirrors.dotsrc.org/ctan/systems/texlive/tlnet
 
 COPY texlive.profile /tmp/texlive.profile
 
-RUN mkdir /tmp/install-tl \
- && wget -qO- https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz \
-    | tar -xz -C /tmp/install-tl --strip-components=1 \
+RUN wget -nv --tries=3 -O /tmp/install-tl.tar.gz "$CTAN_MIRROR/install-tl-unx.tar.gz" \
+ && mkdir /tmp/install-tl \
+ && tar -xzf /tmp/install-tl.tar.gz -C /tmp/install-tl --strip-components=1 \
  && perl /tmp/install-tl/install-tl \
       --profile=/tmp/texlive.profile \
-      --repository=https://mirror.ctan.org/systems/texlive/tlnet \
- && rm -rf /tmp/install-tl /tmp/texlive.profile
-
+      --repository="$CTAN_MIRROR" \
+ && rm -rf /tmp/install-tl /tmp/install-tl.tar.gz /tmp/texlive.profile
+ 
 ENV PATH="/opt/texlive/bin/x86_64-linux:$PATH"
 
 RUN tlmgr install collection-xetex latexmk tex-gyre fontawesome fontspec geometry pgf xcolor enumitem hyperref titlesec microtype tcolorbox
