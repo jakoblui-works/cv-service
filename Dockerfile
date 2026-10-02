@@ -35,6 +35,9 @@ COPY ./app ./app
 
 COPY scripts/smoke_check.py ./scripts/smoke_check.py
 
+COPY alembic.ini ./
+COPY migrations ./migrations
+
 ENV PATH="/app/.venv/bin:$PATH"
 
 RUN useradd --create-home --uid 1000 worker

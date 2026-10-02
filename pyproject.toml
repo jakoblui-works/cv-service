@@ -6,8 +6,11 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "aioboto3>=15.5.0",
+    "alembic>=1.20.0",
+    "asyncpg>=0.31.0",
     "pydantic>=2.13.5",
     "pydantic-settings>=2.15.0",
+    "sqlalchemy[asyncio]>=2.1.2",
     "taskiq>=0.13.0",
     "taskiq-redis>=1.2.4",
 ]
