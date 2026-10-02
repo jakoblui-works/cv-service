@@ -1,0 +1,314 @@
+% Jakob Lui Abramson CV style
+% Compile with XeLaTeX.
+
+\ProvidesPackage{preamble}[2026/08/19 Jakob Abramson CV style]
+
+\usepackage[a4paper,top=1.05cm,bottom=1.15cm,left=1.35cm,right=1.35cm]{geometry}
+\usepackage[TU]{fontenc}
+% fourier-otf removed: it loads a serif text/math family that \setmainfont
+% overrides anyway, and its glyph mappings are a needless extraction risk.
+% \usepackage{fourier-otf}
+\usepackage{fontawesome}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\usepackage{tcolorbox}
+\usepackage{microtype}
+\usepackage{array}
+% =========================================================
+% TYPOGRAPHY
+% =========================================================
+
+\usepackage{fontspec}
+\usepackage{microtype}
+
+% ---------------------------------------------------------
+% FONT -- chosen for ATS text extraction, not just looks.
+%
+% Arial is the safest resume font for parsers. Carlito is the
+% metric-compatible Calibri clone and is always present on Overleaf.
+% TeX Gyre Heros (a Helvetica clone) ships with every TeX Live, so the
+% chain always terminates in something that exists and never errors.
+%
+% Ligatures=NoCommon is the ATS-relevant part: it stops "fi"/"fl" from
+% being merged into single glyphs, which some parsers extract as
+% mojibake or drop entirely.
+% ---------------------------------------------------------
+\defaultfontfeatures{Ligatures=NoCommon}
+
+% TeX Gyre Heros is the free Helvetica/Arial clone. It ships with every TeX
+% Live and Overleaf install, so it needs no conditional, and Helvetica/Arial
+% letterforms are the most conventional shape an ATS or recruiter will see.
+%
+% Chosen over Carlito for x-height. Carlito (Calibri metrics) has an x-height
+% of 0.478em against Verdana's 0.545em, so it renders ~12% smaller at the same
+% point size -- the text looked shrunken. Heros is 0.523em, which restores
+% almost all of the apparent size at the same nominal sizes.
+%
+% Do NOT reintroduce \IfFontExistsTF{Arial}/{Verdana} here. fontconfig aliases
+% those names to substitutes, so the test returns TRUE and then \setmainfont
+% fails on the missing file -- the chain never falls through, it just errors.
+% That is what the original Verdana block did.
+\setmainfont{TeX Gyre Heros}[Ligatures=NoCommon]
+% \setmainfont{Arial}[Ligatures=NoCommon]     % only where Arial is genuinely installed
+% \setmainfont{Carlito}[Ligatures=NoCommon]   % Calibri metrics; smaller on the page
+
+% General document typography
+\renewcommand{\baselinestretch}{1.0}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+% Prevent awkward line breaks in long CV bullets
+\setlength{\emergencystretch}{2pt}
+
+
+% ---------------------------------------------------------
+% Colours
+% ---------------------------------------------------------
+\definecolor{titleBackColor}{HTML}{4A4A4A}
+\definecolor{textColor}{HTML}{505050}
+\definecolor{metaColor}{HTML}{626262}
+\definecolor{mutedColor}{HTML}{777777}
+\definecolor{sectionColor}{HTML}{555555}
+\definecolor{profileTextColor}{HTML}{4A4A4A}
+\definecolor{profileLabelColor}{HTML}{3F3F3F}
+\definecolor{headerColor}{HTML}{414141}
+\definecolor{sideBarColor}{HTML}{E9E9E9}
+\definecolor{skillBoxColor}{HTML}{E8E8E8}
+\definecolor{ruleColor}{HTML}{D0D0D0}
+
+
+% Apply main text colour
+\color{textColor}
+
+\hypersetup{
+  colorlinks=true,
+  urlcolor=titleBackColor,
+  linkcolor=titleBackColor,
+  pdfborder={0 0 0}
+}
+
+\urlstyle{same}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\tabcolsep}{0pt}
+\setlength{\emergencystretch}{2pt}
+
+\titleformat{\section}
+  {\fontsize{11}{13}\selectfont\mdseries\color{sectionColor}}
+  {}
+  {0pt}
+  {}
+  [\color{sectionColor}\titlerule]
+\titlespacing*{\section}{0pt}{10pt}{16pt}
+
+
+
+% Hyperlink styling
+% Body links are dark and visible. The header sits on a dark band, so
+% \simpleheader locally overrides urlcolor to white for its own contents.
+\hypersetup{
+    colorlinks=true,
+    urlcolor=titleBackColor,
+    linkcolor=titleBackColor,
+    pdfborder={0 0 0},
+    % PDF metadata: some ATS read these fields before the page content.
+    pdftitle={Jakob Lui Abramson -- CV},
+    pdfauthor={Jakob Lui Abramson},
+    pdfsubject={Software Engineer / Technical Lead},
+    pdfkeywords={Software Engineer, Technical Lead, Full-Stack, Frontend,
+      React, TypeScript, JavaScript, Node.js, Python, FastAPI, PostgreSQL,
+      Docker, CI/CD, Machine Learning, Computer Vision, Copenhagen}
+}
+
+% Visible placeholder for facts only you can supply. Delete before sending.
+\newcommand{\TODO}[1]{{\color{red}\bfseries [TODO: #1]}}
+
+\urlstyle{same}
+
+% Header
+\newcommand{\simpleheader}[2]{%
+    \begin{tikzpicture}[remember picture,overlay]
+
+        % Background
+        \fill[
+            headerColor
+        ]
+        (current page.north west)
+        rectangle
+        ([yshift=-2.25cm]current page.north east);
+
+        % Name
+        \node[
+            anchor=west,
+            text=white,
+            inner sep=0pt
+        ]
+        at ([xshift=1.35cm,yshift=-0.85cm]current page.north west)
+        {
+            \fontsize{27}{31}\selectfont
+            \bfseries #1
+        };
+
+        % Contact information
+        \node[
+            anchor=west,
+            text=white,
+            inner sep=0pt
+        ]
+        at ([xshift=1.38cm,yshift=-1.65cm]current page.north west)
+        {
+            \fontsize{10.5}{13}\selectfont
+            \begingroup\hypersetup{urlcolor=white}#2\endgroup
+        };
+
+
+
+    \end{tikzpicture}
+    \vspace{1cm}
+}
+
+% Compact visual skill band: searchable text, no bars/charts.
+\newcommand{\skillband}[2]{%
+  {\color{textColor}
+   \textbf{\small #1:} {\small #2}
+  }\par
+  \vspace{2pt}%
+}
+% =========================================================
+% COMPANY / EXPERIENCE BLOCK
+% =========================================================
+
+% Company line sits directly below the grouped job titles.
+% #1 = company
+% #2 = employment type / location / other metadata
+\newcommand{\companyheading}[3]{%
+{\fontsize{8.2}{10}\selectfont
+ \color{metaColor}
+ \textbf{#1}%
+ \hspace{4pt}
+ \textbar
+ \hspace{4pt}
+ #2%
+ \hfill
+ #3%
+}\par
+}
+
+% Promotion marker. Deliberately larger and darker than a footnote: this is a
+% positive signal a recruiter should catch in a 6-second skim, and it also
+% gives ATS parsers a single line containing both titles, which helps when a
+% parser would otherwise attribute only one title to the employer.
+\newcommand{\promotion}[1]{%
+  {\fontsize{8.2}{10}\selectfont
+   \itshape
+   \color{metaColor}
+   #1%
+  }\par
+  \vspace{2pt}%
+}
+
+% Highlight for a key outcome inside a bullet.
+% Bold is purely visual -- it extracts as identical plain text, so this is
+% neutral for ATS and helps a human skimming. Use sparingly: if more than
+% about one line per role is bold, nothing stands out any more.
+% To turn all highlighting off, change the body to just #1.
+\newcommand{\metric}[1]{\textbf{#1}}
+% Concise overview of the role, including relevant technical context.
+\newcommand{\companysummary}[1]{%
+  \vspace{2.5pt}%
+  {\fontsize{8.2}{10}\selectfont
+   \color{textColor}
+   #1%
+  }\par
+  \vspace{4.5pt}%
+}
+% Job title line.
+% NOTE: \addfontfeatures{LetterSpace=0.12} was removed here. Tracking is
+% implemented as inter-glyph kerns, and weaker ATS parsers turn those into
+% word breaks -- "Technical Lead" can extract as "T e c h n i c a l".
+% The job title is the single most important string on the CV to get right.
+% #1 = title
+% #2 = dates
+\newcommand{\role}[2]{%
+  \noindent
+  \makebox[\linewidth][l]{%
+    {\fontsize{11}{15}\selectfont
+     \bfseries
+     \color{titleBackColor}
+     #1}%
+    \hfill
+    {\fontsize{8.4}{15}\selectfont
+     \color{mutedColor}
+     \bfseries
+     #2}
+  }%
+  \par
+  \vspace{3.2pt}
+}
+
+% Company block:
+% #1 = company
+% #2 = company metadata
+% #3 = grouped role lines
+% #4 = optional metadata line
+% #5 = bullet content
+%
+% The old promotion line is deliberately not rendered.
+% The company name now appears immediately underneath the titles.
+\newcommand{\companyblock}[5]{%
+  \begin{minipage}[t]{\linewidth}
+
+    #3
+
+    \vspace{2.4pt}
+    \companyheading{#1}{#2}{\if\relax\detokenize{#4}\relax
+    \else
+      {\fontsize{7.9}{9.5}\textit{#4}}\par
+    \fi}
+    \vspace{4pt}
+    #5
+
+  \end{minipage}
+  \vspace{7pt}
+}
+
+% Experience bullets.
+% The right margin keeps the text measure deliberately narrower.
+\newenvironment{jobbullets}{%
+  \begin{itemize}[
+    leftmargin=0.43cm,
+    rightmargin=1.25cm,
+    label=\textbullet,
+    itemsep=2.5pt,
+    topsep=2.2pt,
+    parsep=0pt,
+    partopsep=0pt
+  ]
+  \fontsize{8.8}{11}\selectfont
+}{%
+  \end{itemize}
+}
+
+
+\newcommand{\education}[5]{%
+  \begin{minipage}[t]{\linewidth}
+    \begin{tabularx}{\linewidth}{@{}X r@{}}
+      \textbf{\small #1} & {\footnotesize\color{mutedColor}#2}\\
+    \end{tabularx}
+    {\small #3}\par
+    {\footnotesize\color{mutedColor}#4}\par
+    {\footnotesize #5}
+  \end{minipage}
+  \vspace{7pt}
+}
+
+\newcommand{\sidebarSection}[1]{%
+  {\small\bfseries\color{titleBackColor}#1}\par
+  \vspace{2pt}\color{titleBackColor}\rule{\linewidth}{0.5pt}\par\vspace{3pt}
+}

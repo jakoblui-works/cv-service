@@ -16,7 +16,7 @@ RUN wget -nv --tries=3 -O /tmp/install-tl.tar.gz "$CTAN_MIRROR/install-tl-unx.ta
       --profile=/tmp/texlive.profile \
       --repository="$CTAN_MIRROR" \
  && rm -rf /tmp/install-tl /tmp/install-tl.tar.gz /tmp/texlive.profile
- 
+
 ENV PATH="/opt/texlive/bin/x86_64-linux:$PATH"
 
 RUN tlmgr install collection-xetex latexmk tex-gyre fontawesome fontspec geometry pgf xcolor enumitem hyperref titlesec microtype tcolorbox
@@ -33,6 +33,11 @@ RUN uv sync --locked --no-dev
 
 COPY ./app ./app
 
+COPY scripts/smoke_test.py ./scripts/smoke_test.py
+
 ENV PATH="/app/.venv/bin:$PATH"
+
+RUN useradd --create-home --uid 1000 worker
+USER worker
 
 CMD ["taskiq", "worker", "app.core.broker:broker", "--fs-discover", "--workers", "1"]

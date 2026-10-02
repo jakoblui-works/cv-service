@@ -25,5 +25,5 @@ htmlcov/
 *.fls
 *.fdb_latexmk
 *.synctex.gz
-
+cv.tex
 # OS
