@@ -43,4 +43,4 @@ ENV PATH="/app/.venv/bin:$PATH"
 RUN useradd --create-home --uid 1000 worker
 USER worker
 
-CMD ["taskiq", "worker", "app.core.broker:broker", "--fs-discover", "--workers", "1"]
+CMD ["taskiq", "worker", "app.core.broker:broker", "--fs-discover", "--tasks-pattern", "app/**/tasks.py", "--workers", "1"]
