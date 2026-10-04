@@ -92,17 +92,34 @@ class Role(ContentModel):
         return self
 
 
-class Bullet(ContentModel):
-    text: str
-    metric: str | None = None  # substring of text to highlight
-    tags: list[Id] = []
+class Highlight(ContentModel):
+    text: str  # substring of the variant text to emphasise
+    tags: list[Id] = Field(min_length=1)
     priority: int = Field(default=0, ge=0)
 
+
+class BulletVariant(ContentModel):
+    text: str
+    tags: list[Id] = []
+    highlights: list[Highlight] = []
+
     @model_validator(mode="after")
-    def check_metric(self) -> Self:
-        if self.metric is not None and self.metric not in self.text:
-            raise ValueError(f"metric {self.metric!r} not found in bullet text {self.text!r}")
+    def check_highlights(self) -> Self:
+        for highlight in self.highlights:
+            if highlight.text not in self.text:
+                raise ValueError(f"highlight {highlight.text!r} not found in bullet text {self.text!r}")
         return self
+
+
+class Bullet(ContentModel):
+    id: Id
+    priority: int = Field(default=0, ge=0)
+    variants: list[BulletVariant] = Field(min_length=1)  # first = default phrasing
+
+
+class DescriptionVariant(ContentModel):
+    text: str
+    tags: list[Id] = []
 
 
 class Job(ContentModel):
@@ -111,7 +128,7 @@ class Job(ContentModel):
     employment: str
     location: str
     tagline: str | None = None
-    description: str
+    descriptions: list[DescriptionVariant] = Field(min_length=1)  # first = default
     promotion_note: str | None = None
     roles: list[Role] = Field(min_length=1)
     bullets: list[Bullet]
@@ -121,6 +138,7 @@ class Layout(ContentModel):
     max_bullets_total: int = Field(ge=1)
     min_bullets_per_job: int = Field(ge=1)
     max_skill_lines: int = Field(ge=1)
+    max_highlights: int = Field(ge=0)
 
 
 def _check_unique(ids: Iterable[str], kind: str) -> set[str]:
@@ -174,7 +192,14 @@ class Content(ContentModel):
         for title in self.titles:
             _check_refs(title.emphasis, tag_ids, f"emphasis of title {title.id!r}")
         for job in self.experience:
-            for i, bullet in enumerate(job.bullets):
-                _check_refs(bullet.tags, tag_ids, f"tags of bullet {i} in job {job.id!r}")
+            _check_unique((bullet.id for bullet in job.bullets), f"bullet (job {job.id!r})")
+            for i, description in enumerate(job.descriptions):
+                _check_refs(description.tags, tag_ids, f"tags of description {i} in job {job.id!r}")
+            for bullet in job.bullets:
+                for i, variant in enumerate(bullet.variants):
+                    where = f"variant {i} of bullet {bullet.id!r} in job {job.id!r}"
+                    _check_refs(variant.tags, tag_ids, f"tags of {where}")
+                    for highlight in variant.highlights:
+                        _check_refs(highlight.tags, tag_ids, f"tags of highlight {highlight.text!r} in {where}")
 
         return self
