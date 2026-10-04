@@ -1,0 +1,111 @@
+# Form-only concepts. They share the tag namespace with skills but never appear as skill-box lines.
+# `implies` lists skill ids that picking the concept pulls in.
+- id: devops
+  label: DevOps
+  implies:
+    [
+      docker,
+      docker-swarm,
+      digitalocean,
+      ansible,
+      github-actions,
+      ci-cd,
+      linux,
+      git,
+      sentry,
+      grafana,
+      terraform,
+      deployment-architecture,
+      developer-tooling,
+      release-management,
+    ]
+
+- id: frontend
+  label: Frontend
+  implies:
+    [
+      react,
+      react-router,
+      angular,
+      storybook,
+      ux-ui,
+      vite,
+      tailwind,
+      zustand,
+      swr,
+      rxjs,
+      typescript,
+      javascript,
+    ]
+
+- id: backend
+  label: Backend
+  implies:
+    [
+      nodejs,
+      express,
+      zod,
+      typeorm,
+      jwt,
+      pydantic,
+      fastapi,
+      rest-apis,
+      websockets,
+      postgresql,
+      mysql,
+      redis,
+      bullmq,
+    ]
+
+- id: architecture
+  label: Architecture
+  implies:
+    [
+      software-architecture,
+      api-design,
+      production-systems,
+      legacy-system-modernisation,
+      apis-integrations,
+      data-flows,
+      deployment-architecture,
+    ]
+
+- id: leadership
+  label: Leadership
+  implies: [technical-leadership, sprint-planning, stakeholder-communication]
+
+- id: ai-ml
+  label: AI/ML
+  implies:
+    [
+      computer-vision,
+      image-processing,
+      llm-document-extraction,
+      evaluation-regression-testing,
+      cython,
+      python,
+      machine-learning,
+      statistics,
+    ]
+
+- id: testing
+  label: Testing
+  implies: [automated-testing, evaluation-regression-testing]
+
+- id: product
+  label: Product
+  implies:
+    [
+      ux-ui,
+      prioritisation,
+      sprint-planning,
+      stakeholder-communication,
+      usability-testing,
+      user-journey-mapping,
+      customer-feedback,
+      developer-experience,
+    ]
+
+- id: security
+  label: Security
+  implies: [jwt, access-control-security]

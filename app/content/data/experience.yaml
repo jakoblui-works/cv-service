@@ -1,0 +1,141 @@
+# Jobs in reverse-chronological order; roles within a job newest first. Dates are the 1st of the month.
+# `metric` is the substring of the bullet text to highlight. Tags are a first pass — review.
+- id: acembee
+  company: Acembee
+  employment: Full Time
+  location: Copenhagen, Denmark
+  tagline: AI-native ESG platform that extracts data from unstructured documents to generate LCA reports.
+  description: >-
+    Led product development with broad ownership across product direction, architecture, infrastructure and
+    engineering, while establishing a more structured development organisation.
+  promotion_note: Promoted from Full-Stack Developer to Lead Product Developer in Mar. 2026, after 6 months.
+  roles:
+    - {title: Lead Product Developer, start: 2026-03-01, end: 2026-08-01}
+    - {title: Full-Stack Developer, start: 2025-09-01, end: 2026-02-01}
+  bullets:
+    - text: >-
+        Replaced the legacy permission system with RBAC, resolving longstanding security issues while supporting
+        more flexible organisation structures and simpler access management.
+      tags: [security, backend, architecture, software-architecture, api-design]
+      priority: 2
+
+    - text: >-
+        Developed an evaluation framework for the AI document-extraction pipeline - test corpus, fuzzy matching,
+        accuracy and latency reporting - to catch regressions when changing prompts or models.
+      tags: [ai-ml, testing, llm-document-extraction, evaluation-regression-testing, python]
+      priority: 2
+
+    - text: >-
+        Redesigned deployment around rolling releases, replacing a coordinated 3-week schedule with independent
+        deploys. Cut deployment time from a developer-day to 10–20 minutes and let any developer ship to production
+        unaided.
+      metric: a developer-day to 10–20 minutes
+      tags: [devops, architecture, ci-cd, docker, docker-swarm, github-actions, production-systems]
+      priority: 3
+
+    - text: >-
+        Built an extensible internal CLI for environment setup, service orchestration and troubleshooting, cutting
+        ~30 manual commands to 3–4 and getting new developers productive within days.
+      metric: getting new developers productive within days
+      tags: [devops, docker, linux]
+      priority: 1
+
+    - text: >-
+        Introduced automated application testing where only database-connectivity checks existed, covering API
+        behaviour, data transformations and response validation.
+      tags: [testing, backend, automated-testing, rest-apis]
+      priority: 1
+
+    - text: >-
+        Grew the engineering team to 6, recruiting and onboarding 5 developers while taking responsibility for
+        technical direction, code reviews, sprint planning and 1:1s.
+      metric: Grew the engineering team to 6
+      tags: [leadership, technical-leadership]
+      priority: 3
+
+        - text: >-
+        Made database migrations part of the automated deployment flow instead of a manual step.
+      tags: [devops, ci-cd, production-systems, postgresql]
+      priority: 1
+
+    - text: >-
+        Mapped the user journey early and prioritised the usability improvements that became a key differentiator
+        in sales.
+      tags: [product, ux-ui, user-journey-mapping]  
+      priority: 2
+
+
+- id: confect
+  company: Confect
+  employment: Full Time
+  location: Copenhagen, Denmark
+  tagline: MarTech SaaS for designing high-performance catalog ads for Meta, powered by in-house computer vision models.
+  description: >-
+    Led frontend development as the product scaled, while driving full-stack capabilities and engineering
+    workflows.
+  promotion_note: Promoted from Full-Stack Developer to Senior Frontend & Operations Engineer in Feb. 2024.
+  roles:
+    - {title: Senior Frontend & Operations Engineer, start: 2024-02-01, end: 2025-08-01}
+    - {title: Full-Stack Developer, start: 2023-08-01, end: 2024-01-01}
+  bullets:
+    - text: >-
+        Designed and built a Canva-style editor on a delegate-based architecture, with consuming applications
+        supplying behaviours and design specifications.
+      tags: [frontend, architecture, react, typescript, software-architecture]
+      priority: 3
+
+    - text: >-
+        A single editor served three surfaces - design templates, standalone ad creation and in-place catalog
+        overlay - replacing a grid-based tool with free-form positioning, layers and basic video editing.
+      metric: A single editor served three surfaces
+      tags: [frontend, product, react, typescript]
+      priority: 2
+
+    - text: >-
+        Created 100+ reusable components and 20+ screens, accelerating complex screen development from 1–3 days to
+        1–2 hours in some cases and enabling consistent UI changes across the application.
+      tags: [frontend, react, typescript, storybook, ux-ui]
+      priority: 2
+
+    - text: >-
+        Transformed the product from a functional catalog-ad tool into a polished workflow product, using product
+        data, customer feedback and direct support experience to improve UX and onboarding, with customers citing
+        ease of use as their reason for choosing the platform over competitors.
+      metric: ease of use as their reason for choosing the platform over competitors
+      tags: [product, frontend, ux-ui]
+      priority: 2
+
+    - text: >-
+        Reduced incorrect bug reports from ~10 per day to ~1 per week by restructuring the Support-to-Engineering
+        workflow.
+      tags: [leadership, product]
+      priority: 1
+
+    - text: >-
+        Made informal usability testing with non-technical colleagues part of development, leading to changes
+        ranging from small fixes to complete feature reworks.
+      tags: [product, ux-ui, frontend, usability-testing]  
+      priority: 2
+
+- id: confect-ml
+  company: Confect
+  employment: Part Time
+  location: Copenhagen, Denmark
+  description: >-
+    Developed and optimized image-processing and machine-learning pipelines, with a focus on computational
+    performance and practical application.
+  roles:
+    - {title: AI and Machine Learning Engineer, start: 2021-10-01, end: 2023-07-01}
+  bullets:
+    - text: >-
+        Achieved an approximately 1000× speedup in an image-blurring pipeline, replacing exact Gaussian blur with an
+        approximation implemented in Cython.
+      metric: 1000× speedup
+      tags: [ai-ml, image-processing, cython, python]
+      priority: 2
+
+    - text: >-
+        Contributed to the in-house background-removal models behind the product's automated ad creative, plus
+        feature extraction for colour palettes, image temperature and video thumbnails.
+      tags: [ai-ml, computer-vision, image-processing, python]
+      priority: 1

@@ -1,0 +1,4 @@
+# Values reproduce the current PDF: 6 + 5 + 2 bullets, 9 skill lines (including the pinned languages line).
+max_bullets_total: 13
+min_bullets_per_job: 2
+max_skill_lines: 9

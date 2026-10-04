@@ -1,0 +1,121 @@
+# Skill-box categories in display order. Priority: higher = more important (first-pass values).
+- id: languages
+  label: Languages
+  pinned: true
+  skills:
+    - { id: danish, label: Danish (Native) }
+    - { id: english, label: English (Fluent) }
+
+- id: programming-languages
+  label: Programming Languages
+  skills:
+    - { id: python, label: Python, priority: 3 }
+    - { id: typescript, label: TypeScript, priority: 3 }
+    - { id: javascript, label: JavaScript, priority: 2 }
+    - { id: java, label: Java, priority: 1 }
+    - { id: csharp, label: "C#" }
+    - { id: fsharp, label: "F#" }
+
+- id: frontend
+  label: Frontend
+  skills:
+    - { id: react, label: React, priority: 3 }
+    - { id: react-router, label: React Router, priority: 1 }
+    - { id: angular, label: Angular, priority: 1 }
+    - { id: storybook, label: Storybook, priority: 2 }
+    - { id: ux-ui, label: UX/UI, priority: 2 }
+    - { id: vite, label: Vite, priority: 1 }
+    - { id: tailwind, label: Tailwind, priority: 1 }
+    - { id: zustand, label: Zustand }
+    - { id: swr, label: SWR }
+    - { id: rxjs, label: RxJS }
+
+- id: backend
+  label: Backend
+  skills:
+    - { id: nodejs, label: Node.js, priority: 3 }
+    - { id: express, label: Express, priority: 1 }
+    - { id: zod, label: Zod, priority: 1 }
+    - { id: typeorm, label: TypeORM, priority: 1 }
+    - { id: jwt, label: JWT }
+    - { id: pydantic, label: Pydantic, priority: 1 }
+    - { id: fastapi, label: FastAPI, priority: 2 }
+    - { id: rest-apis, label: REST APIs, priority: 2 }
+    - { id: websockets, label: WebSockets }
+
+- id: data
+  label: Data
+  skills:
+    - { id: postgresql, label: PostgreSQL, priority: 3 }
+    - { id: mysql, label: MySQL, priority: 1 }
+    - { id: redis, label: Redis, priority: 2 }
+    - { id: bullmq, label: BullMQ }
+    - { id: s3, label: S3-compatible object storage, priority: 1 }
+
+- id: infrastructure
+  label: Infrastructure
+  skills:
+    - { id: docker, label: Docker, priority: 3 }
+    - { id: docker-swarm, label: Docker Swarm, priority: 1 }
+    - { id: digitalocean, label: DigitalOcean }
+    - { id: ansible, label: Ansible, priority: 1 }
+    - { id: github-actions, label: GitHub Actions, priority: 2 }
+    - { id: ci-cd, label: CI/CD, priority: 3 }
+    - { id: linux, label: Linux, priority: 2 }
+    - { id: git, label: Git, priority: 1 }
+    - { id: terraform, label: Terraform }
+
+- id: observability
+  label: Observability
+  skills:
+    - { id: sentry, label: Sentry, priority: 1 }
+    - { id: grafana, label: Grafana, priority: 1 }
+
+- id: ai-ml
+  label: AI/ML
+  skills:
+    - { id: computer-vision, label: Computer Vision, priority: 3 }
+    - { id: image-processing, label: Image Processing, priority: 2 }
+    - {
+        id: llm-document-extraction,
+        label: LLM-Based Document Extraction,
+        priority: 3,
+      }
+    - {
+        id: evaluation-regression-testing,
+        label: Evaluation & Regression Testing,
+        priority: 2,
+      }
+    - { id: cython, label: Cython, priority: 1 }
+    - { id: machine-learning, label: Machine Learning }
+    - { id: statistics, label: Statistics }
+
+- id: engineering
+  label: Engineering
+  skills:
+    - { id: software-architecture, label: Software Architecture, priority: 3 }
+    - { id: api-design, label: API Design, priority: 2 }
+    - { id: technical-leadership, label: Technical Leadership, priority: 3 }
+    - { id: automated-testing, label: Automated Testing, priority: 2 }
+    - { id: production-systems, label: Production Systems, priority: 2 }
+    - { id: legacy-system-modernisation, label: Legacy System Modernisation }
+    - { id: access-control-security, label: Access Control & Security }
+    - { id: deployment-architecture, label: Deployment Architecture }
+    - { id: developer-tooling, label: Developer Tooling }
+    - { id: apis-integrations, label: APIs & Integrations }
+    - { id: data-flows, label: Data Flows }
+    - { id: release-management, label: Release Management }
+
+- id: product-skills
+  label: Product
+  skills:
+    - { id: prioritisation, label: Prioritisation }
+    - { id: sprint-planning, label: Sprint Planning }
+    - { id: stakeholder-communication, label: Stakeholder Communication }
+    - { id: usability-testing, label: Usability Testing }
+    - { id: user-journey-mapping, label: User Journey Mapping }
+    - { id: customer-feedback, label: Customer Feedback & Support Insight }
+    - {
+        id: developer-experience,
+        label: Developer Experience & Self-Service Tooling,
+      }

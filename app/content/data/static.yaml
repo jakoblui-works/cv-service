@@ -1,0 +1,51 @@
+# Contact details (email, phone, LinkedIn) are injected at runtime from env — never add them here.
+name: Jakob Lui Abramson
+city: Copenhagen, Denmark
+
+projects:
+  - name: Persona
+    discipline: Software & Machine Learning
+    kind: Interactive AI installation
+    location: Saatchi Gallery, London
+    start_year: 2023
+    end_year: 2024
+    description: >-
+      An interactive digital portrait that infers a viewer's emotional state from their movement and responds
+      through embodied expression, built as the proof-of-concept implementation of a cognitive architecture
+      formalising the Laban–Malmgren system of movement psychology. Contributed to the formalisation of the
+      cognitive model, built the software the installation ran on, and designed and trained the neural models
+      estimating movement qualities from real-time pose data. Credited as full-stack engineer in the resulting
+      CogSci 2026 paper. Premiered at the Saatchi Gallery, London, and named a Lumen Prize Futures Award finalist
+      in 2024.
+    links:
+      - text: CogSci 2026 paper
+        url: https://escholarship.org/uc/item/7z84h0r0
+      - text: Lumen Prize Futures Award finalist
+        url: https://lumenprize.org/futures-award-finalists-2024/persona
+
+education:
+  - institution: University of Copenhagen
+    department: Department of Mathematics
+    degree: BSc Mathematics
+    location: Copenhagen, Denmark
+    start_year: 2022
+    end_year: 2023
+    description: Completed in one year, building on previous coursework. Focus on statistics and mathematical foundations.
+
+  - institution: University of Copenhagen
+    department: Department of Computer Science
+    degree: BSc Machine Learning and Data Science
+    location: Copenhagen, Denmark
+    start_year: 2019
+    end_year: 2022
+    description: >-
+      Focus on statistics and theoretical machine learning. Bachelor's thesis on model-free and model-based
+      infinite-horizon averaged-reward reinforcement learning.
+
+  - institution: University of Cambridge
+    department: Wolfson College
+    degree: Computer Science Tripos
+    location: Cambridge, England
+    start_year: 2018
+    end_year: 2019
+    description: Admitted to the BA programme; completed most of the first-year coursework before leaving for family reasons.

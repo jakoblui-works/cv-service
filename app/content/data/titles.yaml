@@ -1,0 +1,45 @@
+- id: full-stack-engineer
+  label: Full-Stack Engineer
+  # DRAFT: blended from the PDF's variants A and B — review.
+  profile: >-
+    Full-stack engineer comfortable across the whole product: React and TypeScript frontends, Node.js and Python
+    backends, and the infrastructure that ships them. Background running from frontend architecture and developer
+    tooling to production machine learning. Spends time close to users and support, which is usually where it
+    becomes obvious that something is more complicated than it needs to be.
+  emphasis: [frontend, backend, react, typescript, nodejs, python, postgresql]
+
+- id: technical-lead # from your current CV
+  profile: >-
+    Software engineer and technical lead, most drawn to the whole problem: how a system should be built, deployed, and
+    kept reliable as it grows. Background running from CI/CD and deployment architecture through developer tooling to
+    production machine learning. Recently led engineering at an AI-native ESG platform, redesigning the release process
+    and infrastructure while growing the team to 6.
+
+- id: senior-software-engineer # "what to build" variant
+  profile: >-
+    Software engineer and technical lead, most drawn to the whole problem: what to build, how it fits the system that
+    already exists, and why it matters to the people using it. Background running from production machine learning and
+    computer vision through to frontend architecture and developer tooling. Recently led engineering at an AI-native ESG
+    platform, growing the team to 6 while owning technical direction, architecture and infrastructure.
+
+- id: senior-frontend-engineer
+  profile: >-
+    Hands-on software engineer and technical lead with a strong background in frontend development, UX/UI and product
+    engineering, most drawn to the whole problem: what to build, how it fits the system that already exists, and why it
+    matters to the people using it. Strong in React, TypeScript, software architecture, API design, CI/CD and testing.
+    Recently led engineering at an AI-native ESG platform, growing the team to 6 while owning technical direction,
+    architecture and infrastructure.
+
+- id: platform-engineer # NEW title? (infra variant)
+  profile: >-
+    Software engineer and technical lead focused on the infrastructure that keeps products running: deployment
+    workflows, cloud environments and internal tooling. Linux as primary OS for almost 10 years. Recently led
+    engineering at an AI-native ESG platform, replacing a three-week release cycle with rolling releases and rewriting
+    much of the cloud infrastructure. Brings a full-stack developer's understanding of the applications being operated.
+
+- id: technical-product-owner # NEW title? (two variants — pick one)
+  profile: >-
+    Technical lead moving into product ownership, drawn to the whole problem: what to build, how it fits the existing
+    system, and why it matters to users. Experienced in turning customer feedback and business needs into clear
+    priorities, modernising legacy systems and leading development teams. Technically fluent in APIs, integrations and
+    data flows, and at home translating between customers, stakeholders and developers.
