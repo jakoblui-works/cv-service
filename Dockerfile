@@ -9,7 +9,7 @@ ARG CTAN_MIRROR=https://mirrors.dotsrc.org/ctan/systems/texlive/tlnet
 
 COPY texlive.profile /tmp/texlive.profile
 
-RUN wget -nv --tries=3 -O /tmp/install-tl.tar.gz "$CTAN_MIRROR/install-tl-unx.tar.gz" \
+RUN wget -nv ---tries=5 --retry-connrefused --waitretry=5 -O /tmp/install-tl.tar.gz "$CTAN_MIRROR/install-tl-unx.tar.gz" \
  && mkdir /tmp/install-tl \
  && tar -xzf /tmp/install-tl.tar.gz -C /tmp/install-tl --strip-components=1 \
  && perl /tmp/install-tl/install-tl \
