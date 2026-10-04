@@ -114,6 +114,7 @@ class BulletVariant(ContentModel):
 class Bullet(ContentModel):
     id: Id
     priority: int = Field(default=0, ge=0)
+    tags: list[Id] = []  # what the achievement demonstrates; variant tags are only the phrasing's angle
     variants: list[BulletVariant] = Field(min_length=1)  # first = default phrasing
 
 
@@ -196,6 +197,7 @@ class Content(ContentModel):
             for i, description in enumerate(job.descriptions):
                 _check_refs(description.tags, tag_ids, f"tags of description {i} in job {job.id!r}")
             for bullet in job.bullets:
+                _check_refs(bullet.tags, tag_ids, f"tags of bullet {bullet.id!r} in job {job.id!r}")
                 for i, variant in enumerate(bullet.variants):
                     where = f"variant {i} of bullet {bullet.id!r} in job {job.id!r}"
                     _check_refs(variant.tags, tag_ids, f"tags of {where}")

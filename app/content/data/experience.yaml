@@ -1,8 +1,9 @@
 # Jobs in reverse-chronological order; roles within a job newest first. Dates are the 1st of the month.
 # Each bullet is one achievement with one or more phrasings (`variants`); the first variant is the default. Likewise
 # the first entry of `descriptions` is the default. A highlight's `text` is a substring of its variant's text.
-# Tags are a first pass — review. `# review` marks tag choices made during conversion; `# proposed` marks highlight
-# candidates that did not exist as a metric before.
+# Tags work on two levels: `Bullet.tags` is what the achievement demonstrates (true of every phrasing) and decides
+# whether it is selected; a variant's `tags` is only the audience angle of that phrasing and decides which phrasing is
+# used, so the default variant has none. Highlight tags describe the highlighted phrase itself.
 - id: acembee
   company: Acembee
   employment: Full Time
@@ -18,148 +19,155 @@
       tags: [devops, architecture]
   promotion_note: Promoted from Full-Stack Developer to Lead Product Developer in Mar. 2026, after 6 months.
   roles:
-    - {title: Lead Product Developer, start: 2026-03-01, end: 2026-08-01}
-    - {title: Full-Stack Developer, start: 2025-09-01, end: 2026-02-01}
+    - { title: Lead Product Developer, start: 2026-03-01, end: 2026-08-01 }
+    - { title: Full-Stack Developer, start: 2025-09-01, end: 2026-02-01 }
   bullets:
     - id: rbac-permission-system
       priority: 2
+      tags:
+        - security
+        - backend
+        - architecture
+        - software-architecture
+        - api-design
+        - access-control-security
+        - legacy-system-modernisation
       variants:
         - text: >-
             Replaced the legacy permission system with RBAC, resolving longstanding security issues while supporting
             more flexible organisation structures and simpler access management.
-          tags: [security, backend, architecture, software-architecture, api-design]
-        # initiative angle
+        # product angle
         - text: >-
             Investigated customer access needs, uncovered a significant security gap, and replaced the legacy
             permission system with RBAC, making access management both more secure and more flexible.
-          tags: [security, product, access-control-security, legacy-system-modernisation] # review
+          tags: [product, security]
           highlights:
             - text: uncovered a significant security gap
-              tags: [security] # proposed
-        # short
-        - text: >-
-            Uncovered a significant security gap in the legacy permission system and replaced it with RBAC, closing the
-            gap while simplifying access management.
-          tags: [security, access-control-security] # review
+              tags: [security]
 
     - id: extraction-evaluation-framework
       priority: 2
+      tags: [ai-ml, testing, llm-document-extraction, evaluation-regression-testing, python]
       variants:
-        - text: >-
-            Developed an evaluation framework for the AI document-extraction pipeline - test corpus, fuzzy matching,
-            accuracy and latency reporting - to catch regressions when changing prompts or models.
-          tags: [ai-ml, testing, llm-document-extraction, evaluation-regression-testing, python]
-        # outcome angle
         - text: >-
             Developed an evaluation framework for the AI document-extraction pipeline, measuring accuracy and latency
             against a test corpus so prompt and model changes could be adopted with confidence.
-          tags: [ai-ml, testing, evaluation-regression-testing] # review
         # customer angle
         - text: >-
             Built an evaluation framework for the AI document-extraction pipeline, so prompt and model changes were
             measured on accuracy and latency before reaching customers.
-          tags: [ai-ml, product, evaluation-regression-testing] # review
+          tags: [product, customer-feedback, stakeholder-communication]
 
     - id: rolling-release-deployment
       priority: 3
+      tags:
+        - devops
+        - architecture
+        - ci-cd
+        - docker
+        - docker-swarm
+        - github-actions
+        - production-systems
+        - deployment-architecture
+        - release-management
       variants:
         - text: >-
             Redesigned deployment around rolling releases, replacing a coordinated 3-week schedule with independent
             deploys. Cut deployment time from a developer-day to 10–20 minutes and let any developer ship to
             production unaided.
-          tags: [devops, architecture, ci-cd, docker, docker-swarm, github-actions, production-systems]
           highlights:
             - text: a developer-day to 10–20 minutes
-              tags: [devops, ci-cd] # review
+              tags: [devops, ci-cd]
         # ownership angle
         - text: >-
             Redesigned deployment around rolling releases, replacing a coordinated 3-week schedule with independent
             deploys, so each developer could own a feature from planning to production. Cut deployment time from a
             developer-day to 10–20 minutes.
-          tags: [devops, leadership, release-management] # review
+          tags: [leadership]
           highlights:
-            - text: a developer-day to 10–20 minutes
-              tags: [devops, leadership] # proposed
+            - text: each developer could own a feature from planning to production
+              tags: [leadership]
         # ops angle
         - text: >-
             Redesigned deployment around rolling releases, replacing a coordinated 3-week schedule with independent
             deploys: pipelines that run unattended, deployment steps that fail loudly and specifically, and monitoring
             that shows what went wrong. Cut deployment time from a developer-day to 10–20 minutes and let any
             developer ship to production unaided.
-          tags: [devops, ci-cd, deployment-architecture, production-systems] # review
+          tags: [devops]
           highlights:
             - text: a developer-day to 10–20 minutes
-              tags: [devops, ci-cd] # proposed
+              tags: [devops, ci-cd]
         # customer angle
         - text: >-
             Moved from a coordinated three-week release cycle to rolling releases, so new features reached customers
             immediately and each developer could own a feature from planning to production. Cut deployment time from a
             developer-day to 10–20 minutes.
-          tags: [product, devops, release-management] # review
+          tags: [product]
           highlights:
             - text: new features reached customers immediately
-              tags: [product] # proposed
+              tags: [product]
 
     - id: internal-developer-cli
       priority: 1
+      tags: [devops, docker, linux, developer-tooling, developer-experience]
       variants:
         - text: >-
             Built an extensible internal CLI for environment setup, service orchestration and troubleshooting, cutting
             ~30 manual commands to 3–4 and getting new developers productive within days.
-          tags: [devops, docker, linux]
           highlights:
             - text: getting new developers productive within days
-              tags: [devops, developer-tooling] # review
+              tags: [leadership]
             - text: ~30 manual commands to 3–4
-              tags: [devops, developer-tooling] # proposed
+              tags: [devops, developer-tooling]
 
     - id: automated-application-testing
       priority: 1
+      tags: [testing, backend, automated-testing, rest-apis, ci-cd]
       variants:
         - text: >-
             Introduced automated application testing where only database-connectivity checks existed, covering API
             behaviour, data transformations and response validation.
-          tags: [testing, backend, automated-testing, rest-apis]
         # + enforcement
         - text: >-
             Introduced automated application testing where only database-connectivity checks existed, covering API
             behaviour, data transformations and response validation, and set up workflows that enforced test
             coverage.
-          tags: [testing, backend, automated-testing, ci-cd] # review
+          tags: [devops]
 
     - id: grow-engineering-team
       priority: 3
+      tags: [leadership, technical-leadership, sprint-planning]
       variants:
         - text: >-
             Grew the engineering team to 6, recruiting and onboarding 5 developers while taking responsibility for
             technical direction, code reviews, sprint planning and 1:1s.
-          tags: [leadership, technical-leadership]
           highlights:
             - text: Grew the engineering team to 6
-              tags: [leadership, technical-leadership] # review
-        # short
-        - text: Grew the team to 6, running sprint planning, technical direction and 1:1s.
-          tags: [leadership, technical-leadership, sprint-planning] # review
-          highlights:
-            - text: Grew the team to 6
-              tags: [leadership] # proposed
+              tags: [leadership, technical-leadership]
 
     - id: automated-database-migrations
       priority: 1
+      tags: [devops, ci-cd, production-systems, postgresql]
       variants:
-        - text: Made database migrations part of the automated deployment flow instead of a manual step.
-          tags: [devops, ci-cd, production-systems, postgresql]
+        - text: >-
+            Made database and data migrations part of the automated deployment flow, removing the manual migrations
+            developers previously had to remember to run and making every deployment safer.
+        # ops angle
+        - text: >-
+            Moved schema and data migrations out of manual steps and into the automated deployment flow, so every
+            release applied them consistently and deployments no longer depended on a developer remembering them.
+          tags: [devops]
 
     - id: user-journey-usability-priorities
       priority: 2
+      tags: [product, ux-ui, user-journey-mapping]
       variants:
         - text: >-
             Mapped the user journey early and prioritised the usability improvements that became a key differentiator
             in sales.
-          tags: [product, ux-ui, user-journey-mapping]
           highlights:
             - text: a key differentiator in sales
-              tags: [product, ux-ui] # proposed
+              tags: [product]
 
 - id: confect
   company: Confect
@@ -180,102 +188,77 @@
       tags: [product, ux-ui]
   promotion_note: Promoted from Full-Stack Developer to Senior Frontend & Operations Engineer in Feb. 2024.
   roles:
-    - {title: Senior Frontend & Operations Engineer, start: 2024-02-01, end: 2025-08-01}
-    - {title: Full-Stack Developer, start: 2023-08-01, end: 2024-01-01}
+    - { title: Senior Frontend & Operations Engineer, start: 2024-02-01, end: 2025-08-01 }
+    - { title: Full-Stack Developer, start: 2023-08-01, end: 2024-01-01 }
   bullets:
     - id: delegate-based-editor
       priority: 3
+      tags: [frontend, architecture, react, typescript, software-architecture]
       variants:
         - text: >-
             Designed and built a Canva-style editor on a delegate-based architecture, with consuming applications
             supplying behaviours and design specifications.
-          tags: [frontend, architecture, react, typescript, software-architecture]
 
     - id: single-editor-three-surfaces
       priority: 2
+      tags: [frontend, product, react, typescript, legacy-system-modernisation]
       variants:
         - text: >-
             A single editor served three surfaces - design templates, standalone ad creation and in-place catalog
             overlay - replacing a grid-based tool with free-form positioning, layers and basic video editing.
-          tags: [frontend, product, react, typescript]
           highlights:
             - text: A single editor served three surfaces
-              tags: [frontend, product] # review
-        # condensed
-        - text: >-
-            Replaced a rigid grid-based tool with a single Canva-style editor serving three product surfaces, adding
-            free-form layouts, layers and basic video editing.
-          tags: [frontend, product, legacy-system-modernisation] # review
-          highlights:
-            - text: a single Canva-style editor serving three product surfaces
-              tags: [frontend, product] # proposed
+              tags: [frontend, product]
 
     - id: reusable-component-library
       priority: 2
+      tags: [frontend, react, typescript, storybook, ux-ui]
       variants:
         - text: >-
             Created 100+ reusable components and 20+ screens, accelerating complex screen development from 1–3 days to
             1–2 hours in some cases and enabling consistent UI changes across the application.
-          tags: [frontend, react, typescript, storybook, ux-ui]
           highlights:
             - text: from 1–3 days to 1–2 hours
-              tags: [frontend] # proposed
-        # condensed
-        - text: >-
-            Built a library of 100+ reusable components, cutting complex screen development from days to hours in
-            some cases.
-          tags: [frontend, react, storybook] # review
-          highlights:
-            - text: from days to hours
-              tags: [frontend] # proposed
+              tags: [frontend]
 
     - id: catalog-ad-product-transformation
       priority: 2
+      tags: [product, frontend, ux-ui, customer-feedback]
       variants:
-        - text: >-
-            Transformed the product from a functional catalog-ad tool into a polished workflow product, using product
-            data, customer feedback and direct support experience to improve UX and onboarding, with customers citing
-            ease of use as their reason for choosing the platform over competitors.
-          tags: [product, frontend, ux-ui]
-          highlights:
-            - text: ease of use as their reason for choosing the platform over competitors
-              tags: [product, ux-ui] # review
-        # condensed
         - text: >-
             Transformed the product from a functional catalog-ad tool into a polished workflow product, using product
             data and customer feedback to improve UX and onboarding. Customers cited ease of use as their reason for
             choosing Confect over competitors.
-          tags: [product, ux-ui, customer-feedback] # review
           highlights:
             - text: ease of use as their reason for choosing Confect over competitors
-              tags: [product, ux-ui] # proposed
+              tags: [product, ux-ui]
 
     - id: support-engineering-workflow
       priority: 1
+      tags: [leadership, product, customer-feedback]
       variants:
         - text: >-
             Reduced incorrect bug reports from ~10 per day to ~1 per week by restructuring the Support-to-Engineering
             workflow.
-          tags: [leadership, product]
           highlights:
             - text: from ~10 per day to ~1 per week
-              tags: [product] # proposed
+              tags: [product]
         # initiative angle
         - text: >-
             Proposed and took on regular support shifts to understand customer friction first-hand, then restructured
             the Support-to-Engineering workflow, reducing incorrect bug reports from ~10 per day to ~1 per week.
-          tags: [product, leadership, customer-feedback] # review
+          tags: [product]
           highlights:
             - text: from ~10 per day to ~1 per week
-              tags: [product] # proposed
+              tags: [product]
 
     - id: usability-testing-in-development
       priority: 2
+      tags: [product, ux-ui, frontend, usability-testing]
       variants:
         - text: >-
             Made informal usability testing with non-technical colleagues part of development, leading to changes
             ranging from small fixes to complete feature reworks.
-          tags: [product, ux-ui, frontend, usability-testing]
 
 - id: confect-ml
   company: Confect
@@ -286,23 +269,23 @@
         Developed and optimized image-processing and machine-learning pipelines, with a focus on computational
         performance and practical application.
   roles:
-    - {title: AI and Machine Learning Engineer, start: 2021-10-01, end: 2023-07-01}
+    - { title: AI and Machine Learning Engineer, start: 2021-10-01, end: 2023-07-01 }
   bullets:
     - id: gaussian-blur-speedup
       priority: 2
+      tags: [ai-ml, image-processing, cython, python]
       variants:
         - text: >-
             Achieved an approximately 1000× speedup in an image-blurring pipeline, replacing exact Gaussian blur with
             an approximation implemented in Cython.
-          tags: [ai-ml, image-processing, cython, python]
           highlights:
             - text: 1000× speedup
-              tags: [image-processing, cython] # review
+              tags: [image-processing, cython]
 
     - id: background-removal-models
       priority: 1
+      tags: [ai-ml, computer-vision, image-processing, python]
       variants:
         - text: >-
             Contributed to the in-house background-removal models behind the product's automated ad creative, plus
             feature extraction for colour palettes, image temperature and video thumbnails.
-          tags: [ai-ml, computer-vision, image-processing, python]

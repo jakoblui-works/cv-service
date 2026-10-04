@@ -16,12 +16,10 @@ def _job(**overrides: object) -> dict[str, object]:
         "bullets": [
             {
                 "id": "built-a-thing",
+                "tags": ["python", "backend"],
                 "variants": [
-                    {
-                        "text": "Built a thing 2× faster.",
-                        "tags": ["python", "backend"],
-                        "highlights": [{"text": "2× faster", "tags": ["backend"]}],
-                    }
+                    {"text": "Built a thing 2× faster.", "highlights": [{"text": "2× faster", "tags": ["backend"]}]},
+                    {"text": "Built a backend thing 2× faster.", "tags": ["backend"]},
                 ],
             }
         ],
@@ -56,12 +54,19 @@ def test_minimal_content_is_valid() -> None:
     Content.model_validate(_content())
 
 
-def test_unknown_bullet_tag() -> None:
+def test_unknown_variant_tag() -> None:
     experience = [_job(bullets=_bullet(tags=["cobol"]))]
 
     with pytest.raises(
         ValidationError, match="unknown id 'cobol' in tags of variant 0 of bullet 'built-a-thing' in job 'acme'"
     ):
+        Content.model_validate(_content(experience=experience))
+
+
+def test_unknown_bullet_level_tag() -> None:
+    experience = [_job(bullets=[{"id": "built-a-thing", "tags": ["cobol"], "variants": [{"text": "Built a thing."}]}])]
+
+    with pytest.raises(ValidationError, match="unknown id 'cobol' in tags of bullet 'built-a-thing' in job 'acme'"):
         Content.model_validate(_content(experience=experience))
 
 
