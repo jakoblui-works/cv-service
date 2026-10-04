@@ -5,7 +5,7 @@ RUN apt-get update \
  && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
-ARG CTAN_MIRROR=https://mirrors.dotsrc.org/ctan/systems/texlive/tlnet
+ARG CTAN_MIRROR=https://mirror.ctan.org/systems/texlive/tlnet
 
 COPY texlive.profile /tmp/texlive.profile
 
