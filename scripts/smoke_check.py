@@ -4,8 +4,8 @@ from app.content.loader import load_content
 from app.content.selection.pipeline import select
 from app.content.selection.request import SelectionRequest
 from app.core.config import settings
+from app.render.compile import compile_latex
 from app.render.cv import render_cv
-from app.render.latex import compile_latex
 
 
 async def check() -> None:

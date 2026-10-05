@@ -2,7 +2,7 @@ import pytest
 from hypothesis import given
 from hypothesis import strategies as st
 
-from app.render.latex_text import LATEX_ESCAPE_LOOKUP, Latex, escape_latex
+from app.render.escape import LATEX_ESCAPE_LOOKUP, Latex, escape_latex
 
 SPECIAL_CHARS = "".join(LATEX_ESCAPE_LOOKUP)
 

@@ -1,6 +1,6 @@
 from app.content.selection.models import Selection
 from app.core.config import ContactSettings
-from app.render.environment import env
+from app.render.templating import env
 
 TEMPLATE = "cv.tex.j2"
 

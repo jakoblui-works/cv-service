@@ -5,7 +5,7 @@ import signal
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
-STYLE_FILE = Path(__file__).parent / "preamble.sty"
+STYLE_FILE = Path(__file__).parent / "templates" / "preamble.sty"
 
 
 class LatexCompileError(Exception):

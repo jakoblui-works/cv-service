@@ -14,6 +14,7 @@ from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 os.environ["DATABASE__NAME"] = "cv_test"
 
 from app.core.config import settings  # noqa: E402
+from app.pdfs import cache  # noqa: E402
 
 ALEMBIC_INI = Path(__file__).parents[1] / "alembic.ini"
 
@@ -47,3 +48,33 @@ async def session() -> AsyncIterator[AsyncSession]:
             yield s
         await outer.rollback()
     await engine.dispose()
+
+
+# Fakes for the PDF cache's compile/upload calls (patched where app.pdfs.cache looks them up).
+@pytest.fixture
+def fake_pdf() -> bytes:
+    return b"%PDF-fake"
+
+
+@pytest.fixture
+def compile_calls(monkeypatch: pytest.MonkeyPatch, fake_pdf: bytes) -> list[str]:
+    calls: list[str] = []
+
+    async def fake_compile(source: str) -> bytes:
+        calls.append(source)
+        return fake_pdf
+
+    monkeypatch.setattr(cache, "compile_latex", fake_compile)
+    return calls
+
+
+@pytest.fixture
+def upload_calls(monkeypatch: pytest.MonkeyPatch) -> list[tuple[str, bytes]]:
+    calls: list[tuple[str, bytes]] = []
+
+    async def fake_upload(key: str, pdf: bytes) -> None:
+        calls.append((key, pdf))
+
+    monkeypatch.setattr(cache, "upload_pdf", fake_upload)
+
+    return calls

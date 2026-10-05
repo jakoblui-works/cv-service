@@ -4,7 +4,7 @@ import pytest
 from pydantic import ValidationError
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.render.tasks import generate
+from app.generate.tasks import generate
 
 REQUEST: dict[str, object] = {
     "title_id": "technical-lead",

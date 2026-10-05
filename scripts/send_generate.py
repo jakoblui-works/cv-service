@@ -7,7 +7,7 @@ import argparse
 import asyncio
 
 from app.core.broker import broker
-from app.render.tasks import generate
+from app.generate.tasks import generate
 
 
 def parse_args() -> argparse.Namespace:

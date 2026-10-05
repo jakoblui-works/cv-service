@@ -5,8 +5,8 @@ from hypothesis import given
 from hypothesis import strategies as st
 from jinja2 import UndefinedError
 
-from app.render.environment import env
-from app.render.latex_text import Latex, escape_latex
+from app.render.escape import Latex, escape_latex
+from app.render.templating import env
 
 
 def render(source: str, **values: object) -> str:

@@ -4,8 +4,8 @@ from sqlalchemy import func, update
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.render.latex import compile_latex
-from app.render.models import CvPdf
+from app.pdfs.models import CvPdf
+from app.render.compile import compile_latex
 from app.storage.s3 import upload_pdf
 
 

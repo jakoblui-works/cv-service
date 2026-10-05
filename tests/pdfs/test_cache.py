@@ -5,8 +5,8 @@ import pytest
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.render.models import CvPdf
-from app.render.pdf_cache import get_or_compile_pdf
+from app.pdfs.cache import get_or_compile_pdf
+from app.pdfs.models import CvPdf
 
 SOURCE = r"\documentclass{article}\begin{document}Cached\end{document}"
 

@@ -2,7 +2,7 @@ import pytest
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.render.models import CvPdf
+from app.pdfs.models import CvPdf
 
 DIGEST = "a" * 64
 SIZE_BYTES = 2500
