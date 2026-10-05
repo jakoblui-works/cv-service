@@ -22,40 +22,12 @@
 
 - id: frontend
   label: Frontend
-  implies:
-    [
-      react,
-      react-router,
-      angular,
-      storybook,
-      ux-ui,
-      vite,
-      tailwind,
-      zustand,
-      swr,
-      rxjs,
-      typescript,
-      javascript,
-    ]
+  implies: [react, react-router, angular, storybook, ux-ui, vite, tailwind, zustand, swr, rxjs, typescript, javascript]
 
 - id: backend
   label: Backend
   implies:
-    [
-      nodejs,
-      express,
-      zod,
-      typeorm,
-      jwt,
-      pydantic,
-      fastapi,
-      rest-apis,
-      websockets,
-      postgresql,
-      mysql,
-      redis,
-      bullmq,
-    ]
+    [nodejs, express, zod, typeorm, jwt, pydantic, fastapi, rest-apis, websockets, postgresql, mysql, redis, bullmq]
 
 - id: architecture
   label: Architecture
@@ -65,7 +37,6 @@
       api-design,
       production-systems,
       legacy-system-modernisation,
-      apis-integrations,
       data-flows,
       deployment-architecture,
     ]

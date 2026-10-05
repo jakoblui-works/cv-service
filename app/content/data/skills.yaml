@@ -76,46 +76,42 @@
   skills:
     - { id: computer-vision, label: Computer Vision, priority: 3 }
     - { id: image-processing, label: Image Processing, priority: 2 }
-    - {
-        id: llm-document-extraction,
-        label: LLM-Based Document Extraction,
-        priority: 3,
-      }
-    - {
-        id: evaluation-regression-testing,
-        label: Evaluation & Regression Testing,
-        priority: 2,
-      }
+    - { id: llm-document-extraction, label: LLM-Based Document Extraction, priority: 3 }
+    - { id: evaluation-regression-testing, label: Evaluation & Regression Testing, priority: 2 }
     - { id: cython, label: Cython, priority: 1 }
     - { id: machine-learning, label: Machine Learning }
     - { id: statistics, label: Statistics }
 
-- id: engineering
-  label: Engineering
+- id: architecture
+  label: Architecture
   skills:
     - { id: software-architecture, label: Software Architecture, priority: 3 }
     - { id: api-design, label: API Design, priority: 2 }
-    - { id: technical-leadership, label: Technical Leadership, priority: 3 }
-    - { id: automated-testing, label: Automated Testing, priority: 2 }
-    - { id: production-systems, label: Production Systems, priority: 2 }
+    - { id: data-flows, label: Data Flows }
     - { id: legacy-system-modernisation, label: Legacy System Modernisation }
     - { id: access-control-security, label: Access Control & Security }
+
+- id: delivery
+  label: Engineering Practices
+  skills:
+    - { id: automated-testing, label: Automated Testing, priority: 2 }
+    - { id: production-systems, label: Production Systems, priority: 2 }
     - { id: deployment-architecture, label: Deployment Architecture }
-    - { id: developer-tooling, label: Developer Tooling }
-    - { id: apis-integrations, label: APIs & Integrations }
-    - { id: data-flows, label: Data Flows }
     - { id: release-management, label: Release Management }
+    - { id: developer-tooling, label: Developer Tooling }
+
+- id: leadership-skills
+  label: Leadership
+  skills:
+    - { id: technical-leadership, label: Technical Leadership, priority: 3 }
+    - { id: sprint-planning, label: Sprint Planning }
+    - { id: stakeholder-communication, label: Stakeholder Communication }
 
 - id: product-skills
   label: Product
   skills:
     - { id: prioritisation, label: Prioritisation }
-    - { id: sprint-planning, label: Sprint Planning }
-    - { id: stakeholder-communication, label: Stakeholder Communication }
-    - { id: usability-testing, label: Usability Testing }
     - { id: user-journey-mapping, label: User Journey Mapping }
+    - { id: usability-testing, label: Usability Testing }
     - { id: customer-feedback, label: Customer Feedback & Support Insight }
-    - {
-        id: developer-experience,
-        label: Developer Experience & Self-Service Tooling,
-      }
+    - { id: developer-experience, label: Developer Experience & Self-Service Tooling }
