@@ -19,6 +19,7 @@ dependencies = [
 [dependency-groups]
 dev = [
     "hypothesis>=6.168.3",
+    "mypy>=2.4.0",
     "pytest>=9.1.1",
     "pytest-asyncio>=1.4.0",
     "ruff>=0.16.9",
@@ -32,6 +33,11 @@ asyncio_default_fixture_loop_scope = "function"
 addopts = "--import-mode=importlib"
 pythonpath = ["."]
 testpaths = ["tests"]
+
+[tool.mypy]
+strict = true
+plugins = ["pydantic.mypy"]
+files = ["app", "tests", "migrations", "scripts"]
 
 [tool.uv]
 required-version = ">=0.12.21"

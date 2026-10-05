@@ -14,9 +14,9 @@ async def test_commit_is_visible_within_test(session: AsyncSession) -> None:
     session.add(cvpdf)
     await session.commit()
 
-    cvpdf = await session.scalar(select(CvPdf).where(CvPdf.digest == DIGEST))
+    loaded = await session.scalar(select(CvPdf).where(CvPdf.digest == DIGEST))
 
-    assert cvpdf is not None
+    assert loaded is not None
 
 
 @pytest.mark.asyncio
