@@ -2,7 +2,7 @@ import pytest
 from pydantic import ValidationError
 
 from app.content.loader import load_content
-from app.content.models import Content
+from app.content.models import Content, Project
 
 
 def _job(**overrides: object) -> dict[str, object]:
@@ -143,3 +143,34 @@ def test_invalid_bullet_limits() -> None:
 
     with pytest.raises(ValidationError, match="exceeds max_bullets_total"):
         Content.model_validate(_content(layout=layout))
+
+
+def _project(description: str, link_texts: list[str]) -> dict[str, object]:
+    return {
+        "name": "Thing",
+        "discipline": "Software",
+        "kind": "Installation",
+        "location": "Testville",
+        "start_year": 2020,
+        "description": description,
+        "links": [{"text": text, "url": "https://example.com"} for text in link_texts],
+    }
+
+
+def test_links_in_description_order() -> None:
+    Project.model_validate(_project("See the paper and the award.", ["paper", "award"]))
+
+
+def test_links_out_of_order() -> None:
+    with pytest.raises(ValidationError, match="out of order"):
+        Project.model_validate(_project("See the paper and the award.", ["award", "paper"]))
+
+
+def test_overlapping_links() -> None:
+    with pytest.raises(ValidationError, match="out of order"):
+        Project.model_validate(_project("See the CogSci paper.", ["CogSci paper", "paper"]))
+
+
+def test_link_text_not_in_description() -> None:
+    with pytest.raises(ValidationError, match="'poster' not found in description of project 'Thing'"):
+        Project.model_validate(_project("See the paper.", ["poster"]))

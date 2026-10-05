@@ -28,9 +28,15 @@ class Project(ContentModel):
 
     @model_validator(mode="after")
     def check_links(self) -> Self:
+        # Rendering applies links in list order, so they must appear in that order without overlapping.
+        position = 0
         for link in self.links:
-            if link.text not in self.description:
-                raise ValueError(f"link text {link.text!r} not found in description of project {self.name!r}")
+            found = self.description.find(link.text, position)
+            if found == -1:
+                raise ValueError(
+                    f"link text {link.text!r} not found in description of project {self.name!r} (or out of order)"
+                )
+            position = found + len(link.text)
         return self
 
 

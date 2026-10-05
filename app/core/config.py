@@ -43,6 +43,12 @@ class S3Settings(BaseModel):
     bucket: str
 
 
+class ContactSettings(BaseModel):
+    email: SecretStr
+    phone: SecretStr
+    linkedin: SecretStr
+
+
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
         env_file=".env",
@@ -58,6 +64,7 @@ class Settings(BaseSettings):
     database: DatabaseSettings
     redis: RedisSettings
     s3: S3Settings
+    contact: ContactSettings
 
 
 settings = Settings()  # pyright: ignore[reportCallIssue]  # required fields are loaded from the environment

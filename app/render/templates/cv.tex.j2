@@ -1,0 +1,107 @@
+\#{ Rendered by app.render: every VAR value is escaped unless it is a Latex instance. }
+\#{ Context: selection (Selection), contact (email, phone, linkedin URL). }
+\documentclass[10pt,oneside,a4paper]{article}
+\usepackage{preamble}
+
+\begin{document}
+
+\simpleheader
+  {\VAR{selection.static.name} \large \VAR{selection.static.city}}
+  {%
+    \href{mailto:\VAR{contact.email}}{\VAR{contact.email}}
+    \quad\textbullet\quad
+    \VAR{contact.phone}
+    \quad\textbullet\quad
+    \href{\VAR{contact.linkedin}}{\VAR{contact.linkedin.removeprefix("https://").removeprefix("www.")}}
+  }
+
+\vspace*{0.05cm}
+
+\begin{minipage}[t]{\linewidth}
+{\fontsize{8.8}{11}\selectfont
+ \color{profileTextColor}
+\textbf{\color{profileLabelColor}Profile.} \VAR{selection.title.profile}
+
+}
+\end{minipage}
+
+\vspace{4pt}
+
+\begin{tcolorbox}[
+  colback=skillBoxColor,
+  colframe=skillBoxColor,
+  boxrule=0pt,
+  left=8pt,
+  right=8pt,
+  top=6pt,
+  bottom=5pt
+]
+\BLOCK{for line in selection.skill_lines}
+\skillband{\VAR{line.label}}{\BLOCK{for skill in line.skills}\VAR{skill}\BLOCK{if not loop.last} \textbullet{} \BLOCK{endif}\BLOCK{endfor}}
+\BLOCK{endfor}
+\end{tcolorbox}
+
+\section{WORK EXPERIENCE}
+
+\BLOCK{for selected in selection.jobs}
+\BLOCK{set job = selected.job}
+\companyblock
+  {\VAR{job.company}}
+  {\VAR{job.employment}}
+  {%
+\BLOCK{for role in job.roles}
+    \role{\VAR{role.title}}{\VAR{role.start | month_year}--\BLOCK{if role.end}\VAR{role.end | month_year}\BLOCK{else}Present\BLOCK{endif}}
+\BLOCK{endfor}
+  }
+  {\VAR{job.location}}
+  {%
+\BLOCK{if job.promotion_note}
+    \promotion{\VAR{job.promotion_note}}
+\BLOCK{endif}
+    \companysummary{\BLOCK{if job.tagline}\textit{\VAR{job.tagline}} \BLOCK{endif}\VAR{selected.description}}
+    \begin{jobbullets}
+\BLOCK{for bullet in selected.bullets}
+\BLOCK{if bullet.highlight}
+\BLOCK{set before, _, after = bullet.text.partition(bullet.highlight)}
+    \item \VAR{before}\metric{\VAR{bullet.highlight}}\VAR{after}
+\BLOCK{else}
+    \item \VAR{bullet.text}
+\BLOCK{endif}
+\BLOCK{endfor}
+    \end{jobbullets}
+  }
+
+\BLOCK{endfor}
+\section{PROJECTS}
+
+\BLOCK{for project in selection.static.projects}
+\companyblock
+  {\VAR{project.discipline}}
+  {\VAR{project.kind}}
+  {%
+    \role{\VAR{project.name}}{\VAR{project.start_year}--\VAR{project.end_year or "Present"}}
+  }
+  {\VAR{project.location}}
+  {%
+\#{ Links are applied in list order; each link's text must come after the previous one's in the description. }
+\BLOCK{set rest = namespace(text=project.description)}
+    \companysummary{\BLOCK{for link in project.links}\BLOCK{set parts = rest.text.partition(link.text)}\VAR{parts[0]}\href{\VAR{link.url}}{\VAR{link.text}}\BLOCK{set rest.text = parts[2]}\BLOCK{endfor}\VAR{rest.text}}
+  }
+
+\BLOCK{endfor}
+\section{EDUCATION}
+
+\BLOCK{for education in selection.static.education}
+\companyblock
+  {\VAR{education.institution}}
+  {\VAR{education.department}}
+  {%
+    \role{\VAR{education.degree}}{\VAR{education.start_year}--\VAR{education.end_year or "Present"}}
+  }
+  {\VAR{education.location}}
+  {%
+    \companysummary{\VAR{education.description}}
+  }
+
+\BLOCK{endfor}
+\end{document}
