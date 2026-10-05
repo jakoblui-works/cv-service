@@ -7,6 +7,7 @@ from sqlalchemy import URL, pool, text
 from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import create_async_engine
 
+import app.options.models  # noqa: F401
 import app.pdfs.models  # noqa: F401
 from app.core.config import settings
 from app.core.models import SCHEMA, Base
