@@ -6,7 +6,7 @@
     backends, and the infrastructure that ships them. Background running from frontend architecture and developer
     tooling to production machine learning. Spends time close to users and support, which is usually where it
     becomes obvious that something is more complicated than it needs to be.
-  emphasis: [frontend, backend, react, typescript, nodejs, python, postgresql]
+  emphasis: [frontend, backend, testing, react, typescript, nodejs, python, postgresql, rest-apis, api-design, ci-cd]
 
 - id: technical-lead
   label: Technical Lead
@@ -15,7 +15,8 @@
     kept reliable as it grows. Background running from CI/CD and deployment architecture through developer tooling to
     production machine learning. Recently led engineering at an AI-native ESG platform, redesigning the release process
     and infrastructure while growing the team to 6.
-  emphasis: [leadership, architecture, devops, technical-leadership, software-architecture, ci-cd] # review
+  emphasis:
+    [leadership, architecture, devops, testing, technical-leadership, software-architecture, ci-cd, python, typescript]
 
 - id: senior-software-engineer
   label: Senior Software Engineer
@@ -24,7 +25,19 @@
     already exists, and why it matters to the people using it. Background running from production machine learning and
     computer vision through to frontend architecture and developer tooling. Recently led engineering at an AI-native ESG
     platform, growing the team to 6 while owning technical direction, architecture and infrastructure.
-  emphasis: [architecture, product, frontend, backend, ai-ml, software-architecture] # review
+  emphasis:
+    [
+      architecture,
+      backend,
+      frontend,
+      ai-ml,
+      testing,
+      software-architecture,
+      production-systems,
+      technical-leadership,
+      python,
+      typescript,
+    ]
   # Unplaced generalist variant (could replace the profile above):
   #   Hands-on software engineer and technical lead experienced in scaling production SaaS products and engineering
   #   teams. Strong in architecture, developer productivity and product development, with a track record of
@@ -40,7 +53,7 @@
     matters to the people using it. Strong in React, TypeScript, software architecture, API design, CI/CD and testing.
     Recently led engineering at an AI-native ESG platform, growing the team to 6 while owning technical direction,
     architecture and infrastructure.
-  emphasis: [frontend, product, react, typescript, ux-ui, software-architecture] # review
+  emphasis: [frontend, product, testing, react, typescript, ux-ui, software-architecture, api-design, ci-cd]
 
 - id: platform-engineer
   label: Platform Engineer
@@ -49,7 +62,19 @@
     workflows, cloud environments and internal tooling. Linux as primary OS for almost 10 years. Recently led
     engineering at an AI-native ESG platform, replacing a three-week release cycle with rolling releases and rewriting
     much of the cloud infrastructure. Brings a full-stack developer's understanding of the applications being operated.
-  emphasis: [devops, ci-cd, deployment-architecture, docker, linux, developer-tooling] # review
+  emphasis:
+    [
+      devops,
+      security,
+      ci-cd,
+      deployment-architecture,
+      docker,
+      linux,
+      developer-tooling,
+      developer-experience,
+      production-systems,
+      automated-testing,
+    ]
 
 - id: technical-product-owner
   label: Technical Product Owner
@@ -58,7 +83,7 @@
     system, and why it matters to users. Experienced in turning customer feedback and business needs into clear
     priorities, modernising legacy systems and leading development teams. Technically fluent in APIs, integrations and
     data flows, and at home translating between customers, stakeholders and developers.
-  emphasis: [product, leadership, prioritisation, stakeholder-communication, data-flows] # review
+  emphasis: [product, leadership, prioritisation, stakeholder-communication, customer-feedback, data-flows]
   # Alternative profile (pick one):
   #   Technical lead moving into product ownership, drawn to the whole problem: what to build, how it fits the
   #   existing system, and why it matters to users. Background in mathematics, statistics and machine learning, with

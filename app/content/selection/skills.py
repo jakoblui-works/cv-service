@@ -4,7 +4,7 @@ from app.content.models import Content, Skill, SkillCategory
 from app.content.selection.models import SkillLine
 from app.content.selection.scoring import relevance
 
-# Starting estimate; calibrate against rendered PDFs in the rendering step.
+# Calibrated against rendered PDFs: predicted line counts matched every skill line (incl. wraps).
 CHARS_PER_LINE = 120
 
 

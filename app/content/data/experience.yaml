@@ -28,6 +28,7 @@
         - security
         - backend
         - architecture
+        - product
         - software-architecture
         - api-design
         - access-control-security
@@ -78,6 +79,17 @@
           highlights:
             - text: a developer-day to 10–20 minutes
               tags: [devops, ci-cd]
+        # Non-default variants are listed in tie-break order: on equal relevance the earlier one wins
+        # (product + leadership → customer angle; leadership + devops → ownership angle).
+        # customer angle
+        - text: >-
+            Moved from a coordinated three-week release cycle to rolling releases, so new features reached customers
+            immediately and each developer could own a feature from planning to production. Cut deployment time from a
+            developer-day to 10–20 minutes.
+          tags: [product]
+          highlights:
+            - text: new features reached customers immediately
+              tags: [product]
         # ownership angle
         - text: >-
             Redesigned deployment around rolling releases, replacing a coordinated 3-week schedule with independent
@@ -97,15 +109,6 @@
           highlights:
             - text: a developer-day to 10–20 minutes
               tags: [devops, ci-cd]
-        # customer angle
-        - text: >-
-            Moved from a coordinated three-week release cycle to rolling releases, so new features reached customers
-            immediately and each developer could own a feature from planning to production. Cut deployment time from a
-            developer-day to 10–20 minutes.
-          tags: [product]
-          highlights:
-            - text: new features reached customers immediately
-              tags: [product]
 
     - id: internal-developer-cli
       priority: 1
@@ -160,7 +163,7 @@
 
     - id: user-journey-usability-priorities
       priority: 2
-      tags: [product, ux-ui, user-journey-mapping]
+      tags: [product, frontend, ux-ui, user-journey-mapping]
       variants:
         - text: >-
             Mapped the user journey early and prioritised the usability improvements that became a key differentiator
@@ -212,7 +215,7 @@
 
     - id: reusable-component-library
       priority: 2
-      tags: [frontend, react, typescript, storybook, ux-ui]
+      tags: [frontend, react, typescript, storybook, ux-ui, developer-experience]
       variants:
         - text: >-
             Created 100+ reusable components and 20+ screens, accelerating complex screen development from 1–3 days to
@@ -234,8 +237,8 @@
               tags: [product, ux-ui]
 
     - id: support-engineering-workflow
-      priority: 1
-      tags: [leadership, product, customer-feedback]
+      priority: 2
+      tags: [leadership, product, customer-feedback, stakeholder-communication, production-systems]
       variants:
         - text: >-
             Reduced incorrect bug reports from ~10 per day to ~1 per week by restructuring the Support-to-Engineering

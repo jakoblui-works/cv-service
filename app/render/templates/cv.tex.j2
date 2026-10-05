@@ -72,6 +72,8 @@
   }
 
 \BLOCK{endfor}
+% Projects and education always start page 2: break only if the experience still ends on page 1.
+\ifnum\value{page}=1 \newpage\fi
 \section{PROJECTS}
 
 \BLOCK{for project in selection.static.projects}

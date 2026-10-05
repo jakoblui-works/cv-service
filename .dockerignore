@@ -18,3 +18,5 @@ __pycache__
 tests/
 compose.dev.yml
 dev/
+# Local CV previews
+previews/

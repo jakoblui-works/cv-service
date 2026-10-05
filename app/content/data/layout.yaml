@@ -1,6 +1,7 @@
-# Values reproduce the current PDF: 6 + 5 + 2 bullets, 9 skill lines (including the pinned languages line),
-# 6 highlighted metrics.
+# Calibrated against rendered PDFs (2026-10-05) over every title plus typical concept combinations:
+# both full-time jobs and the part-time job fit on page 1 with page 1 full; projects and education start page 2.
+# More bullets push the part-time job to page 2, leave a gap on page 1, and mostly add zero-relevance bullets.
 max_bullets_total: 10
-min_bullets_per_job: 2
-max_skill_lines: 9
+min_bullets_per_job: 3
+max_skill_lines: 8
 max_highlights: 4

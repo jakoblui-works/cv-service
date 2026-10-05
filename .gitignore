@@ -27,3 +27,5 @@ htmlcov/
 *.synctex.gz
 cv.tex
 # OS
+# CV previews (contain real contact details)
+previews/
