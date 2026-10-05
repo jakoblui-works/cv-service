@@ -1,6 +1,6 @@
 import pytest
 
-from app.render import tasks
+from app.render import pdf_cache
 
 
 @pytest.fixture
@@ -16,7 +16,7 @@ def compile_calls(monkeypatch: pytest.MonkeyPatch, fake_pdf: bytes) -> list[str]
         calls.append(source)
         return fake_pdf
 
-    monkeypatch.setattr(tasks, "compile_latex", fake_compile)
+    monkeypatch.setattr(pdf_cache, "compile_latex", fake_compile)
     return calls
 
 
@@ -27,6 +27,6 @@ def upload_calls(monkeypatch: pytest.MonkeyPatch) -> list[tuple[str, bytes]]:
     async def fake_upload(key: str, pdf: bytes) -> None:
         calls.append((key, pdf))
 
-    monkeypatch.setattr(tasks, "upload_pdf", fake_upload)
+    monkeypatch.setattr(pdf_cache, "upload_pdf", fake_upload)
 
     return calls

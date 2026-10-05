@@ -1,39 +1,20 @@
-import hashlib
-
-from sqlalchemy import func, update
-from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.ext.asyncio import AsyncSession
 from taskiq import TaskiqDepends
 
+from app.content.loader import load_content
+from app.content.selection.pipeline import select
+from app.content.selection.request import SelectionRequest
 from app.core.broker import broker
+from app.core.config import settings
 from app.core.database import get_session
-from app.render.latex import compile_latex
-from app.render.models import CvPdf
-from app.storage.s3 import upload_pdf
-
-TEST_DOCUMENT = r"\documentclass{article}\begin{document}Hello\end{document}"
+from app.render.cv import render_cv
+from app.render.pdf_cache import get_or_compile_pdf
 
 
-@broker.task(task_name="cv.compile_test.v1")
-async def compile_test(session: AsyncSession = TaskiqDepends(get_session)) -> str:
-    digest = hashlib.sha256(TEST_DOCUMENT.encode("utf-8")).hexdigest()
-    key = f"{digest}.pdf"
+@broker.task(task_name="cv.generate.v1")
+async def generate(request: dict[str, object], session: AsyncSession = TaskiqDepends(get_session)) -> str:
+    content = load_content()
+    selection_request = SelectionRequest.model_validate(request, context={"content": content})
+    source = render_cv(select(content, selection_request), settings.contact)
 
-    hit = await session.execute(
-        update(CvPdf).where(CvPdf.digest == digest).values(last_used_at=func.now()).returning(CvPdf.digest)
-    )
-    found = hit.scalar_one_or_none()
-    await session.commit()
-
-    if found is not None:
-        return key
-
-    pdf = await compile_latex(TEST_DOCUMENT)
-
-    await upload_pdf(key, pdf)
-
-    await session.execute(
-        insert(CvPdf).values(digest=digest, size_bytes=len(pdf)).on_conflict_do_nothing(index_elements=[CvPdf.digest])
-    )
-    await session.commit()
-    return key
+    return await get_or_compile_pdf(session, source)
