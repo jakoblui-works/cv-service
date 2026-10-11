@@ -107,6 +107,15 @@
     - { id: sprint-planning, label: Sprint Planning }
     - { id: stakeholder-communication, label: Stakeholder Communication }
 
+- id: people-skills
+  label: People Leadership
+  skills:
+    - { id: people-management, label: People Management, priority: 3 }
+    - { id: mentoring, label: Mentoring & Coaching, priority: 2 }
+    - { id: recruitment-onboarding, label: Recruitment & Onboarding, priority: 2 }
+    - { id: one-to-ones, label: 1:1s & Feedback }
+    - { id: team-ownership, label: Delegation & Team Ownership }
+
 - id: product-skills
   label: Product
   skills:

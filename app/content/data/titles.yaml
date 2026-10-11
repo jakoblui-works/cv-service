@@ -18,6 +18,27 @@
   emphasis:
     [leadership, architecture, devops, testing, technical-leadership, software-architecture, ci-cd, python, typescript]
 
+- id: team-lead
+  label: Team Lead
+  profile: >-
+    Team lead and hands-on software engineer who believes developers do their best work when they own it, from
+    planning through to production. Recently led engineering at an AI-native ESG platform, growing the team to 6
+    through recruitment, onboarding and regular 1:1s, and reshaping the release process so every developer could ship
+    independently. Leads as a fellow developer and sparring partner rather than a gatekeeper. Background running from
+    frontend architecture and developer tooling to production machine learning.
+  emphasis:
+    [
+      people,
+      leadership,
+      devops,
+      people-management,
+      mentoring,
+      recruitment-onboarding,
+      one-to-ones,
+      technical-leadership,
+      ci-cd,
+    ]
+
 - id: senior-software-engineer
   label: Senior Software Engineer
   profile: >-

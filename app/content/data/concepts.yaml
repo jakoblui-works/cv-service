@@ -45,6 +45,10 @@
   label: Leadership
   implies: [technical-leadership, sprint-planning, stakeholder-communication]
 
+- id: people
+  label: People Management
+  implies: [people-management, mentoring, recruitment-onboarding, one-to-ones, team-ownership]
+
 - id: ai-ml
   label: AI/ML
   implies:

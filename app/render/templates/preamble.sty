@@ -174,10 +174,12 @@
 }
 
 % Compact visual skill band: searchable text, no bars/charts.
+% Skill labels are keywords, so they never hyphenate, and lines are ragged so long labels don't stretch the spacing.
+% The \par must stay inside the group: line breaking happens there, and the settings reset when the group closes.
 \newcommand{\skillband}[2]{%
-  {\color{textColor}
-   \textbf{\small #1:} {\small #2}
-  }\par
+  {\color{textColor}\raggedright\hyphenpenalty=10000\exhyphenpenalty=10000
+   \textbf{\small #1:} {\small #2}\par
+  }
   \vspace{2pt}%
 }
 % =========================================================
