@@ -33,7 +33,13 @@ def _bullet(**variant: object) -> list[dict[str, object]]:
 
 def _content(**overrides: object) -> dict[str, object]:
     data: dict[str, object] = {
-        "static": {"name": "Test Person", "city": "Testville", "projects": [], "education": []},
+        "static": {
+            "name": "Test Person",
+            "city": "Testville",
+            "website": "https://example.com",
+            "projects": [],
+            "education": [],
+        },
         "skills": [{"id": "programming", "label": "Programming", "skills": [{"id": "python", "label": "Python"}]}],
         "concepts": [{"id": "backend", "label": "Backend", "implies": ["python"]}],
         "titles": [{"id": "engineer", "label": "Engineer", "profile": "Writes code.", "emphasis": ["backend"]}],

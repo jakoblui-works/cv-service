@@ -1,13 +1,16 @@
-# Skill-box categories in display order. Priority: higher = more important (first-pass values).
+# Skill-box categories in display order. Priority: higher = more important (first-pass values). Priority 0 (the
+# default) means "only when asked for": the skill shows only when the request makes it relevant. Pinned categories
+# come first, but their skills are filtered and ranked like any other.
 - id: languages
   label: Languages
   pinned: true
   skills:
-    - { id: danish, label: Danish (Native) }
-    - { id: english, label: English (Fluent) }
+    - { id: danish, label: Danish (Native), priority: 1 }
+    - { id: english, label: English (Fluent), priority: 1 }
 
 - id: programming-languages
   label: Programming Languages
+  pinned: true
   skills:
     - { id: python, label: Python, priority: 3 }
     - { id: typescript, label: TypeScript, priority: 3 }
@@ -18,6 +21,7 @@
 
 - id: frontend
   label: Frontend
+  pinned: true
   skills:
     - { id: react, label: React, priority: 3 }
     - { id: react-router, label: React Router, priority: 1 }
@@ -32,6 +36,7 @@
 
 - id: backend
   label: Backend
+  pinned: true
   skills:
     - { id: nodejs, label: Node.js, priority: 3 }
     - { id: express, label: Express, priority: 1 }

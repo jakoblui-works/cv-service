@@ -9,7 +9,7 @@ def _content(build: Builder) -> Content:
     highlighted = build.variant("Built it in Python.", highlights=[build.highlight("Python", tags=["python"])])
     return build.content(
         skills=[
-            build.category("languages", [build.skill("danish")], pinned=True),
+            build.category("languages", [build.skill("danish", priority=1)], pinned=True),
             build.category("programming", [build.skill("python"), build.skill("rust")]),
         ],
         concepts=[build.concept("backend", implies=["python"])],

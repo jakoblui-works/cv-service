@@ -35,7 +35,7 @@ def _job() -> Job:
 def selection() -> Selection:
     return Selection(
         title=Title(id="engineer", label="Engineer", profile="Writes code."),
-        static=Static(name="Test Person", city="Testville", projects=[], education=[]),
+        static=Static(name="Test Person", city="Testville", website="https://example.com", projects=[], education=[]),
         jobs=[
             SelectedJob(
                 job=_job(),

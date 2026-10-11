@@ -53,6 +53,7 @@ class Education(ContentModel):
 class Static(ContentModel):
     name: str
     city: str
+    website: str
     projects: list[Project]
     education: list[Education]
 

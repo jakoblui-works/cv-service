@@ -1,6 +1,7 @@
-# Contact details (email, phone, LinkedIn) are injected at runtime from env — never add them here.
+# Contact details (email, phone, LinkedIn) are injected at runtime from env — never add them here. The website is public.
 name: Jakob Lui Abramson
 city: Copenhagen, Denmark
+website: https://jakoblui.com
 
 projects:
   - name: Persona

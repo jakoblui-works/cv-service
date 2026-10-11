@@ -3,5 +3,7 @@
 # More bullets push the part-time job to page 2, leave a gap on page 1, and mostly add zero-relevance bullets.
 max_bullets_total: 10
 min_bullets_per_job: 3
-max_skill_lines: 8
+# Skill lines re-checked 2026-10-11 with Programming Languages, Frontend and Backend pinned: 9 fits every title,
+# 10 pushes the part-time job to page 2 (Senior Frontend, Team Lead).
+max_skill_lines: 9
 max_highlights: 4

@@ -236,21 +236,19 @@
     - { title: Senior Frontend & Operations Engineer, start: 2024-02-01, end: 2025-08-01 }
     - { title: Full-Stack Developer, start: 2023-08-01, end: 2024-01-01 }
   bullets:
-    - id: delegate-based-editor
+    - id: canva-style-editor
       priority: 3
-      tags: [frontend, architecture, react, typescript, software-architecture]
+      tags:
+        [frontend, architecture, product, react, typescript, software-architecture, legacy-system-modernisation]
       variants:
         - text: >-
             Designed and built a Canva-style editor on a delegate-based architecture, with consuming applications
             supplying behaviours and design specifications.
-
-    - id: single-editor-three-surfaces
-      priority: 2
-      tags: [frontend, product, react, typescript, legacy-system-modernisation]
-      variants:
+        # product angle
         - text: >-
             A single editor served three surfaces - design templates, standalone ad creation and in-place catalog
             overlay - replacing a grid-based tool with free-form positioning, layers and basic video editing.
+          tags: [product]
           highlights:
             - text: A single editor served three surfaces
               tags: [frontend, product]

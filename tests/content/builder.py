@@ -70,7 +70,13 @@ class Builder:
             layout = {"max_bullets_total": 20, "min_bullets_per_job": 1, "max_skill_lines": 20, "max_highlights": 5}
         return Content.model_validate(
             {
-                "static": {"name": "Test Person", "city": "Testville", "projects": [], "education": []},
+                "static": {
+                    "name": "Test Person",
+                    "city": "Testville",
+                    "website": "https://example.com",
+                    "projects": [],
+                    "education": [],
+                },
                 "skills": list(skills),
                 "concepts": list(concepts or []),
                 "titles": list(titles),
