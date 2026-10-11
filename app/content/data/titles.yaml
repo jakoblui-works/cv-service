@@ -1,11 +1,11 @@
 - id: full-stack-engineer
-  label: Full-Stack Engineer
+  label: Senior Full-Stack Engineer
   # DRAFT: blended from the PDF's variants A and B — review.
   profile: >-
-    Full-stack engineer comfortable across the whole product: React and TypeScript frontends, Node.js and Python
+    Senior full-stack engineer comfortable across the whole product: React and TypeScript frontends, Node.js and Python
     backends, and the infrastructure that ships them. Background running from frontend architecture and developer
-    tooling to production machine learning. Spends time close to users and support, which is usually where it
-    becomes obvious that something is more complicated than it needs to be.
+    tooling to production machine learning. Spends time close to users and support, which is usually where it becomes
+    obvious that something is more complicated than it needs to be.
   emphasis: [frontend, backend, testing, react, typescript, nodejs, python, postgresql, rest-apis, api-design, ci-cd]
 
 - id: technical-lead
