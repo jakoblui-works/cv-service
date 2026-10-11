@@ -67,7 +67,8 @@ class Skill(ContentModel):
 class SkillCategory(ContentModel):
     id: Id
     label: str
-    pinned: bool = False
+    pinned: bool = False  # its line always comes first in the skill box
+    selectable: bool = True  # its skills are offered in the form and accepted in requests
     skills: list[Skill] = Field(min_length=1)
 
 

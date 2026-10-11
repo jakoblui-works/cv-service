@@ -9,8 +9,8 @@ from tests.content.builder import Builder
 def _content(build: Builder) -> Content:
     return build.content(
         skills=[
-            build.category("languages", [build.skill("danish")], pinned=True),
-            build.category("programming", [build.skill("python")]),
+            build.category("languages", [build.skill("danish")], pinned=True, selectable=False),
+            build.category("programming", [build.skill("python")], pinned=True),
         ],
         concepts=[build.concept("backend", implies=["python"])],
         titles=[build.title("engineer")],
@@ -37,6 +37,14 @@ def test_valid_request_passes(build: Builder) -> None:
     assert request.title_id == "engineer"
 
 
+def test_valid_request_skill_from_pinned_category(build: Builder) -> None:
+    content = _content(build)
+
+    request = _request(content, title_id="engineer", skill_ids=["python"])
+
+    assert request.skill_ids == ["python"]
+
+
 def test_invalid_request_unknown_title(build: Builder) -> None:
     content = _content(build)
 
@@ -58,7 +66,7 @@ def test_invalid_request_unknown_skill(build: Builder) -> None:
         _request(content, title_id="engineer", skill_ids=["rust"])
 
 
-def test_invalid_request_pinned_skill(build: Builder) -> None:
+def test_invalid_request_unselectable_skill(build: Builder) -> None:
     content = _content(build)
 
     with pytest.raises(ValidationError, match="not selectable skill"):

@@ -15,8 +15,8 @@ class Builder:
     def skill(self, id: str, priority: int = 0) -> Data:
         return {"id": id, "label": _label(id), "priority": priority}
 
-    def category(self, id: str, skills: Sequence[Data], pinned: bool = False) -> Data:
-        return {"id": id, "label": _label(id), "pinned": pinned, "skills": list(skills)}
+    def category(self, id: str, skills: Sequence[Data], pinned: bool = False, selectable: bool = True) -> Data:
+        return {"id": id, "label": _label(id), "pinned": pinned, "selectable": selectable, "skills": list(skills)}
 
     def concept(self, id: str, implies: Sequence[str] = ()) -> Data:
         return {"id": id, "label": _label(id), "implies": list(implies)}

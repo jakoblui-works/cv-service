@@ -18,7 +18,7 @@ class SkillGroup(ContentModel):
 class FormOptions(ContentModel):
     titles: list[Option]
     concepts: list[Option]
-    skill_groups: list[SkillGroup]  # non-pinned skill categories, in display order
+    skill_groups: list[SkillGroup]  # selectable skill categories, in display order
 
 
 def build_form_options(content: Content) -> FormOptions:
@@ -31,7 +31,7 @@ def build_form_options(content: Content) -> FormOptions:
             skills=[Option(id=s.id, label=s.label) for s in category.skills],
         )
         for category in content.skills
-        if not category.pinned
+        if category.selectable
     ]
 
     return FormOptions(titles=titles, concepts=concepts, skill_groups=skill_groups)

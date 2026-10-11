@@ -8,8 +8,8 @@ def _content() -> Content:
     build = Builder()
     return build.content(
         skills=[
-            build.category("languages", [build.skill("danish")], pinned=True),
-            build.category("programming", [build.skill("rust"), build.skill("python")]),
+            build.category("languages", [build.skill("danish")], pinned=True, selectable=False),
+            build.category("programming", [build.skill("rust"), build.skill("python")], pinned=True),
             build.category("frontend", [build.skill("react")]),
         ],
         concepts=[build.concept("backend", implies=["python"]), build.concept("ui", implies=["react"])],
@@ -37,13 +37,20 @@ def test_skill_groups_in_content_order() -> None:
     ]
 
 
-def test_pinned_categories_are_left_out() -> None:
+def test_unselectable_categories_are_left_out() -> None:
     options = build_form_options(_content())
 
     group_ids = [group.id for group in options.skill_groups]
     skill_ids = [skill.id for group in options.skill_groups for skill in group.skills]
     assert "languages" not in group_ids
     assert "danish" not in skill_ids
+
+
+def test_pinned_selectable_categories_are_offered() -> None:
+    options = build_form_options(_content())
+
+    skill_ids = [skill.id for group in options.skill_groups for skill in group.skills]
+    assert "python" in skill_ids
 
 
 def test_options_round_trip_through_json() -> None:
@@ -59,4 +66,4 @@ def test_real_content_publishes_every_choosable_option() -> None:
 
     assert len(options.titles) == len(content.titles)
     assert len(options.concepts) == len(content.concepts)
-    assert len(options.skill_groups) == sum(1 for category in content.skills if not category.pinned)
+    assert len(options.skill_groups) == sum(1 for category in content.skills if category.selectable)

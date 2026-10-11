@@ -1,9 +1,11 @@
 # Skill-box categories in display order. Priority: higher = more important (first-pass values). Priority 0 (the
 # default) means "only when asked for": the skill shows only when the request makes it relevant. Pinned categories
-# come first, but their skills are filtered and ranked like any other.
+# come first, but their skills are filtered and ranked like any other. `selectable: false` keeps a category's skills
+# out of the form and out of requests (separate from pinning).
 - id: languages
   label: Languages
   pinned: true
+  selectable: false
   skills:
     - { id: danish, label: Danish (Native), priority: 1 }
     - { id: english, label: English (Fluent), priority: 1 }

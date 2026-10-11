@@ -19,7 +19,7 @@ class SelectionRequest(ContentModel):
         titles = {title.id for title in content.titles}
         concepts = {concept.id for concept in content.concepts}
         selectable_skills = {
-            skill.id for category in content.skills if not category.pinned for skill in category.skills
+            skill.id for category in content.skills if category.selectable for skill in category.skills
         }
 
         if self.title_id not in titles:
