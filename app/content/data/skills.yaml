@@ -1,7 +1,8 @@
 # Skill-box categories in display order. Priority: higher = more important (first-pass values). Priority 0 (the
-# default) means "only when asked for": the skill shows only when the request makes it relevant. Pinned categories
-# come first, but their skills are filtered and ranked like any other. `selectable: false` keeps a category's skills
-# out of the form and out of requests (separate from pinning).
+# default) means "only when asked for": the skill shows only when the request makes it relevant. Category flags:
+# `pinned` always shows the line, at the top; `always_shown` always shows it, ordered by relevance with the others;
+# `selectable: false` keeps its skills out of the form and out of requests. Skills in every line are still filtered
+# and ranked.
 - id: languages
   label: Languages
   pinned: true
@@ -12,7 +13,7 @@
 
 - id: programming-languages
   label: Programming Languages
-  pinned: true
+  always_shown: true
   skills:
     - { id: python, label: Python, priority: 3 }
     - { id: typescript, label: TypeScript, priority: 3 }
@@ -23,7 +24,7 @@
 
 - id: frontend
   label: Frontend
-  pinned: true
+  always_shown: true
   skills:
     - { id: react, label: React, priority: 3 }
     - { id: react-router, label: React Router, priority: 1 }
@@ -38,7 +39,7 @@
 
 - id: backend
   label: Backend
-  pinned: true
+  always_shown: true
   skills:
     - { id: nodejs, label: Node.js, priority: 3 }
     - { id: express, label: Express, priority: 1 }

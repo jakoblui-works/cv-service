@@ -35,6 +35,39 @@ def test_skills_pinned_first_and_ranked(build: Builder) -> None:
     assert lines[0] == SkillLine(label="Languages", skills=["Danish", "Swedish"])
 
 
+def test_skills_pinned_on_top_even_when_less_relevant(build: Builder) -> None:
+    categories = [
+        build.category("programming", [build.skill("python", priority=1)]),
+        build.category("languages", [build.skill("danish", priority=1)], pinned=True),
+    ]
+
+    lines = _select(build, categories, {"python": 3})
+
+    assert _labels(lines) == ["Languages", "Programming"]
+
+
+def test_skills_always_shown_ordered_by_relevance(build: Builder) -> None:
+    categories = [
+        build.category("frontend", [build.skill("react", priority=1)], always_shown=True),
+        build.category("programming", [build.skill("python", priority=1)]),
+    ]
+
+    lines = _select(build, categories, {"python": 3})
+
+    assert _labels(lines) == ["Programming", "Frontend"]
+
+
+def test_skills_always_shown_gets_room_before_more_relevant(build: Builder) -> None:
+    categories = [
+        build.category("programming", [build.skill("python", priority=1)]),
+        build.category("frontend", [build.skill("react", priority=1)], always_shown=True),
+    ]
+
+    lines = _select(build, categories, {"python": 3}, max_lines=1)
+
+    assert _labels(lines) == ["Frontend"]
+
+
 def test_skills_picked_skill_moves_category_ahead(build: Builder) -> None:
     categories = [
         build.category("tools", [build.skill("git", priority=1)]),
@@ -151,7 +184,7 @@ def test_skills_lines_fit_budget_and_keep_top_ranked_skills(
     content = build.content(
         skills=[
             build.category("languages", skill_data[:2], pinned=True),
-            build.category("tools", skill_data[2:5]),
+            build.category("tools", skill_data[2:5], always_shown=True),
             build.category("data", skill_data[5:]),
         ],
         layout={"max_bullets_total": 20, "min_bullets_per_job": 1, "max_skill_lines": max_lines, "max_highlights": 5},

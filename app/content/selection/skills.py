@@ -1,4 +1,5 @@
 import math
+from collections.abc import Iterable
 
 from app.content.models import Content, Skill, SkillCategory
 from app.content.selection.models import SkillLine
@@ -41,22 +42,26 @@ def fitted_line(line: SkillLine, remaining: int) -> SkillLine | None:
     return SkillLine(label=line.label, skills=skills) if skills else None
 
 
+def by_score(categories: Iterable[SkillCategory], weights: dict[str, int]) -> list[SkillCategory]:
+    # sorted() is stable, so ties keep YAML order.
+    return sorted(categories, key=lambda category: category_score(category, weights), reverse=True)
+
+
 def select_skill_lines(content: Content, weights: dict[str, int]) -> list[SkillLine]:
     pinned = [category for category in content.skills if category.pinned]
-    candidates = sorted(
-        (category for category in content.skills if not category.pinned),
-        key=lambda category: category_score(category, weights),
-        reverse=True,
-    )
+    unpinned = by_score((category for category in content.skills if not category.pinned), weights)
+    always_shown = [category for category in unpinned if category.always_shown]
+    rest = [category for category in unpinned if not category.always_shown]
 
-    lines: list[SkillLine] = []
+    # Budget goes to pinned, then always-shown, then the rest by score, so the guaranteed lines always get room.
+    # Every line is filtered, ranked and trimmed to fit.
+    kept: dict[str, SkillLine] = {}
     remaining = content.layout.max_skill_lines
-
-    # Pinned categories come first, so they always get room; every line is filtered, ranked and trimmed to fit.
-    for category in [*pinned, *candidates]:
+    for category in [*pinned, *always_shown, *rest]:
         line = fitted_line(ranked_line(category, weights), remaining)
         if line is not None:
-            lines.append(line)
+            kept[category.id] = line
             remaining -= line_count(line)
 
-    return lines
+    # Display: pinned lines on top, everything else by score.
+    return [kept[category.id] for category in [*pinned, *unpinned] if category.id in kept]
