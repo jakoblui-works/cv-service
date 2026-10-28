@@ -28,8 +28,8 @@ jobs:
       DATABASE__NAME: site_db
       REDIS__HOST: localhost
       REDIS__PASSWORD: dev
-      S3__ACCESS_KEY_ID: GK3034edd8dc6fd1fd46c3ef25 # Dummy id
-      S3__SECRET_ACCESS_KEY: 62baee66f3c5526c5f47fa5b9379ee25609c13dde3837ace75bf833aaac717a4 # Dummy key
+      S3__ACCESS_KEY_ID: ci-dummy
+      S3__SECRET_ACCESS_KEY: ci-dummy
       S3__BUCKET: bucket
       CONTACT__EMAIL: ci-dummy@example.com
       CONTACT__PHONE: +45 00 00 00 00
@@ -40,5 +40,6 @@ jobs:
         uses: astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4 # v10.1.0
       - run: uv sync --locked
       - run: uv run ruff check
+      - run: uv run ruff format --check
       - run: uv run mypy
       - run: uv run pytest

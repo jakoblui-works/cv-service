@@ -10,6 +10,7 @@ dist/
 .pytest_cache/
 .ruff_cache/
 .mypy_cache/
+.hypothesis/
 .coverage
 htmlcov/
 
@@ -18,14 +19,14 @@ htmlcov/
 .env.*
 !.env.example
 
-# LaTeX build artifacts (for when compilation starts)
+# LaTeX build artifacts
 *.aux
 *.log
 *.out
 *.fls
 *.fdb_latexmk
 *.synctex.gz
+
+# Real contact details: never commit
 cv.tex
-# OS
-# CV previews (contain real contact details)
 previews/
