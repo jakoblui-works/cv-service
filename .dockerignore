@@ -13,10 +13,11 @@ __pycache__
 .pytest_cache
 .ruff_cache
 .mypy_cache
+.hypothesis
 
 # Not needed in the image
 tests/
-compose.dev.yml
-dev/
-# Local CV previews
+
+# Local CV previews (real contact details)
 previews/
+cv.tex

@@ -31,6 +31,11 @@ async def _recreate_database() -> None:
         await engine.dispose()
 
 
+@pytest.fixture
+def alembic_config() -> Config:
+    return Config(str(ALEMBIC_INI))
+
+
 @pytest.fixture(scope="session", autouse=True)
 def test_database() -> None:
     if not settings.database.name.endswith("_test"):
