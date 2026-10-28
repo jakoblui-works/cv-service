@@ -31,24 +31,7 @@ jobs:
           tags: ghcr.io/jakoblui-works/cv-service:${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-      - name: Smoke test image
-        run: >
-          docker run --rm \
-            -e REDIS__PASSWORD=x \
-            -e S3__ENDPOINT_URL=http://localhost:3900 \
-            -e S3__ACCESS_KEY_ID=x \
-            -e S3__SECRET_ACCESS_KEY=x \
-            -e S3__BUCKET=x \
-            -e DATABASE__HOST=localhost \
-            -e DATABASE__USER=postgres \
-            -e DATABASE__PASSWORD=postgres \
-            -e DATABASE__NAME=site_db \
-            -e CONTACT__EMAIL=ci-dummy@example.com \
-            -e "CONTACT__PHONE=+45 00 00 00 00" \
-            -e CONTACT__LINKEDIN=https://www.example.com/in/ci-dummy \
-            ghcr.io/jakoblui-works/cv-service:${{ github.sha }} \
-            python -u -c 'import importlib, pkgutil, app; [print(m.name) or importlib.import_module(m.name) for m in pkgutil.walk_packages(app.__path__, "app.")]'
-      # cv-only, in its own step so the template's smoke test above merges cleanly on `copier update`.
+      # cv-only, in its own step above the template's smoke test, so updates to that step merge cleanly on `copier update`.
       - name: TeX smoke test
         run: >
           docker run --rm \
@@ -66,6 +49,23 @@ jobs:
             -e CONTACT__LINKEDIN=https://www.example.com/in/ci-dummy \
             ghcr.io/jakoblui-works/cv-service:${{ github.sha }} \
             sh -c "xelatex --version && fc-list | grep -qi heros && python -m scripts.smoke_check"
+      - name: Smoke test image
+        run: >
+          docker run --rm \
+            -e REDIS__PASSWORD=x \
+            -e S3__ENDPOINT_URL=http://localhost:3900 \
+            -e S3__ACCESS_KEY_ID=x \
+            -e S3__SECRET_ACCESS_KEY=x \
+            -e S3__BUCKET=x \
+            -e DATABASE__HOST=localhost \
+            -e DATABASE__USER=postgres \
+            -e DATABASE__PASSWORD=postgres \
+            -e DATABASE__NAME=site_db \
+            -e CONTACT__EMAIL=ci-dummy@example.com \
+            -e "CONTACT__PHONE=+45 00 00 00 00" \
+            -e CONTACT__LINKEDIN=https://www.example.com/in/ci-dummy \
+            ghcr.io/jakoblui-works/cv-service:${{ github.sha }} \
+            python -u -c 'import importlib, pkgutil, app; [print(m.name) or importlib.import_module(m.name) for m in pkgutil.walk_packages(app.__path__, "app.")]'
       - name: Push
         uses: docker/build-push-action@v7
         with:

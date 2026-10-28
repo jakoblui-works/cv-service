@@ -1,7 +1,8 @@
-from app.core.config import ContactSettings, DatabaseSettings, RedisSettings, settings
+from app.core.config import ContactSettings, DatabaseSettings, RedisSettings, S3Settings, settings
 
 DATABASE_PASSWORD = "database-password-not-for-logs"
 REDIS_PASSWORD = "redis-password-not-for-logs"
+S3_SECRET = "s3-secret-not-for-logs"
 EMAIL = "someone@example.com"
 PHONE = "+45 12 34 56 78"
 LINKEDIN = "https://www.example.com/in/someone"
@@ -46,3 +47,11 @@ def test_contact_values_are_readable_when_unwrapped() -> None:
     contact = ContactSettings.model_validate({"email": EMAIL, "phone": PHONE, "linkedin": LINKEDIN})
 
     assert contact.email.get_secret_value() == EMAIL
+
+
+def test_s3_secret_is_hidden_in_repr() -> None:
+    s3 = S3Settings.model_validate(
+        {"access_key_id": "access-key-id", "secret_access_key": S3_SECRET, "bucket": "bucket"}
+    )
+
+    assert S3_SECRET not in repr(s3)
