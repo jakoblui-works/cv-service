@@ -1,5 +1,5 @@
 # Changes here will be overwritten by Copier; never edit by hand.
-_commit: v0.1.1
+_commit: v0.1.2
 _src_path: gh:jakoblui-works/worker-template
 description: Taskiq worker that owns the whole CV domain
 domain: cv
