@@ -20,7 +20,7 @@
       tags: [people]
     - text: >-
         Led development with broad ownership across architecture, infrastructure and engineering, and rewrote much of
-        the platform's cloud infrastructure.
+        the platform's CI/CD pipeline.
       tags: [devops, architecture]
   promotion_note: Promoted from Full-Stack Developer to Lead Product Developer in Mar. 2026, after 6 months.
   roles:
@@ -118,10 +118,9 @@
               tags: [people]
         # ops angle
         - text: >-
-            Redesigned deployment around rolling releases, replacing a coordinated 3-week schedule with independent
-            deploys: pipelines that run unattended, deployment steps that fail loudly and specifically, and monitoring
-            that shows what went wrong. Cut deployment time from a developer-day to 10–20 minutes and let any
-            developer ship to production unaided.
+            Redesigned deployment around independent rolling releases, replacing a coordinated 3-week cycle whose risk
+            came from batching changes: pipelines that run unattended, steps that fail loudly and specifically, and
+            monitoring that shows what went wrong. Cut deployment time from a developer-day to 10–20 minutes.
           tags: [devops]
           highlights:
             - text: a developer-day to 10–20 minutes
@@ -148,20 +147,27 @@
           highlights:
             - text: work independently within a couple of days
               tags: [people]
+        # ops angle
+        - text: >-
+            Built an extensible internal CLI for recurring dependency issues, environment setup and service
+            orchestration, which the whole team contributed to; cut ~30 manual commands to 3–4 and got new developers
+            productive within days.
+          tags: [devops]
+          highlights:
+            - text: ~30 manual commands to 3–4
+              tags: [devops, developer-tooling]
 
     - id: automated-application-testing
       priority: 1
-      tags: [testing, backend, automated-testing, rest-apis, ci-cd]
+      tags: [testing, backend, automated-testing, rest-apis, ci-cd, devops]
       variants:
-        - text: >-
-            Introduced automated application testing where only database-connectivity checks existed, covering API
-            behaviour, data transformations and response validation.
-        # + enforcement
         - text: >-
             Introduced automated application testing where only database-connectivity checks existed, covering API
             behaviour, data transformations and response validation, and set up workflows that enforced test
             coverage.
-          tags: [devops]
+          highlights:
+            - text: set up workflows that enforced test coverage
+              tags: [devops, ci-cd, automated-testing]
 
     - id: grow-engineering-team
       priority: 3
@@ -197,11 +203,28 @@
         - text: >-
             Made database and data migrations part of the automated deployment flow, removing the manual migrations
             developers previously had to remember to run and making every deployment safer.
+          highlights:
+            - text: automated deployment flow
+              tags: [devops, ci-cd]
         # ops angle
         - text: >-
             Moved schema and data migrations out of manual steps and into the automated deployment flow, so every
             release applied them consistently and deployments no longer depended on a developer remembering them.
           tags: [devops]
+          highlights:
+            - text: into the automated deployment flow
+              tags: [devops, ci-cd]
+
+    - id: production-incident-ownership
+      priority: 2
+      tags: [devops, backend, production-systems, linux, ci-cd]
+      variants:
+        - text: >-
+            Owned production incidents end to end: added a maintenance mode for outages, fixed root causes, and traced
+            how each was introduced to build CI/CD safeguards against whole classes of issues.
+          highlights:
+            - text: safeguards against whole classes of issues
+              tags: [devops, ci-cd]
 
     - id: user-journey-usability-priorities
       priority: 2
@@ -231,6 +254,10 @@
         Led frontend development as the product scaled, while working closely with support and customers to shape the
         product's UX and workflows.
       tags: [product, ux-ui]
+    - text: >-
+        Led frontend development as the product scaled, while owning production issues and driving full-stack
+        capabilities and engineering workflows.
+      tags: [devops]
   promotion_note: Promoted from Full-Stack Developer to Senior Frontend & Operations Engineer in Feb. 2024.
   roles:
     - { title: Senior Frontend & Operations Engineer, start: 2024-02-01, end: 2025-08-01 }
@@ -294,6 +321,17 @@
           highlights:
             - text: from ~10 per day to ~1 per week
               tags: [product]
+
+    - id: production-issue-ownership
+      priority: 2
+      tags: [devops, production-systems, backend]
+      variants:
+        - text: >-
+            Owned production issues found in the app: fixed most frontend and API causes directly, passing on only those
+            needing deeper backend work, and traced each to its root cause to prevent similar failures.
+          highlights:
+            - text: traced each to its root cause to prevent similar failures
+              tags: [devops, production-systems]
 
     - id: usability-testing-in-development
       priority: 2

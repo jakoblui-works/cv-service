@@ -23,6 +23,15 @@ projects:
         url: https://escholarship.org/uc/item/7z84h0r0
       - text: Lumen Prize Futures Award finalist
         url: https://lumenprize.org/futures-award-finalists-2024/persona
+  - name: jakoblui.com
+    discipline: Platform & DevOps
+    kind: Personal platform
+    location: Online
+    start_year: 2026
+    description: >-
+      Self-hosted platform for small projects: infrastructure as code with Terraform and Ansible, Docker Compose
+      on DigitalOcean, GitHub Actions CI/CD with deploy results reported on each commit, a thin API gateway, a
+      Taskiq worker and shared service templates.
 
 education:
   - institution: University of Copenhagen

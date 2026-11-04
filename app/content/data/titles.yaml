@@ -82,7 +82,7 @@
     Software engineer and technical lead focused on the infrastructure that keeps products running: deployment
     workflows, cloud environments and internal tooling. Linux as primary OS for almost 10 years. Recently led
     engineering at an AI-native ESG platform, replacing a three-week release cycle with rolling releases and rewriting
-    much of the cloud infrastructure. Brings a full-stack developer's understanding of the applications being operated.
+    much of the CI/CD pipeline. Brings a full-stack developer's understanding of the applications being operated.
   emphasis:
     [
       devops,
@@ -95,6 +95,29 @@
       developer-experience,
       production-systems,
       automated-testing,
+    ]
+
+- id: devops-engineer
+  label: DevOps Engineer
+  profile: >-
+    Software engineer and technical lead focused on DevOps: CI/CD pipelines, deployment automation and the internal
+    tooling developers rely on. Linux as primary OS for almost 10 years. Recently led engineering at an AI-native ESG
+    platform, replacing a three-week release cycle with rolling releases and rewriting much of the CI/CD pipeline.
+    Brings a full-stack developer's understanding of the applications being operated.
+  emphasis:
+    [
+      devops,
+      testing,
+      ci-cd,
+      docker,
+      linux,
+      github-actions,
+      ansible,
+      terraform,
+      deployment-architecture,
+      release-management,
+      developer-tooling,
+      production-systems,
     ]
 
 - id: technical-product-owner
