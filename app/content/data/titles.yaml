@@ -80,9 +80,9 @@
   label: Platform Engineer
   profile: >-
     Software engineer and technical lead focused on the infrastructure that keeps products running: deployment
-    workflows, cloud environments and internal tooling. Linux as primary OS for almost 10 years. Recently led
-    engineering at an AI-native ESG platform, replacing a three-week release cycle with rolling releases and rewriting
-    much of the CI/CD pipeline. Brings a full-stack developer's understanding of the applications being operated.
+    workflows, cloud environments and internal tooling. Recently led engineering at an AI-native ESG platform,
+    replacing a three-week release cycle with rolling releases and rewriting much of the CI/CD pipeline. Brings a
+    full-stack developer's understanding of the applications being operated.
   emphasis:
     [
       devops,
@@ -100,10 +100,10 @@
 - id: devops-engineer
   label: DevOps Engineer
   profile: >-
-    Software engineer and technical lead focused on DevOps: CI/CD pipelines, deployment automation and the internal
-    tooling developers rely on. Linux as primary OS for almost 10 years. Recently led engineering at an AI-native ESG
+    Senior full-stack engineer and technical lead whose most impactful work has been in how software gets built and
+    shipped: deployment workflows, CI/CD and internal developer tooling. Recently led engineering at an AI-native ESG
     platform, replacing a three-week release cycle with rolling releases and rewriting much of the CI/CD pipeline.
-    Brings a full-stack developer's understanding of the applications being operated.
+    Brings a developer's understanding of the applications being operated.
   emphasis:
     [
       devops,
