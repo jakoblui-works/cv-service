@@ -284,7 +284,7 @@
           tags: [product]
           highlights:
             - text: A single editor served three surfaces
-              tags: [frontend, product]
+              tags: [frontend]
 
     - id: reusable-component-library
       priority: 2
