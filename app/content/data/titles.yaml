@@ -66,6 +66,27 @@
   #   Background in mathematics, statistics and machine learning. Recently led engineering at an AI-native ESG
   #   platform, growing the team to 6 while owning technical direction, architecture and infrastructure.
 
+- id: ai-engineer
+  label: AI Engineer
+  profile: >-
+    Senior software engineer and technical lead building AI products, focused on what makes model output reliable and
+    consistent enough for people to depend on. Has worked from computer vision models to LLM-based document extraction
+    in production, alongside full-stack product work from frontend through to deployment and infrastructure. Background
+    in machine learning and statistics.
+  emphasis:
+    [
+      ai-ml,
+      backend,
+      product,
+      testing,
+      llm-document-extraction,
+      evaluation-regression-testing,
+      python,
+      typescript,
+      production-systems,
+      software-architecture,
+    ]
+
 - id: senior-frontend-engineer
   label: Senior Frontend Engineer
   profile: >-
