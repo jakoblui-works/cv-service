@@ -58,11 +58,17 @@
         - text: >-
             Developed an evaluation framework for the AI document-extraction pipeline, measuring accuracy and latency
             against a test corpus so prompt and model changes could be adopted with confidence.
+          highlights:
+            - text: measuring accuracy and latency against a test corpus
+              tags: [ai-ml, evaluation-regression-testing, llm-document-extraction]
         # customer angle
         - text: >-
             Built an evaluation framework for the AI document-extraction pipeline, so prompt and model changes were
             measured on accuracy and latency before reaching customers.
           tags: [product, customer-feedback, stakeholder-communication]
+          highlights:
+            - text: measured on accuracy and latency before reaching customers
+              tags: [ai-ml, evaluation-regression-testing, llm-document-extraction]
 
     - id: rolling-release-deployment
       priority: 3
@@ -278,7 +284,7 @@
           tags: [product]
           highlights:
             - text: A single editor served three surfaces
-              tags: [frontend, product]
+              tags: [frontend]
 
     - id: reusable-component-library
       priority: 2
@@ -361,7 +367,7 @@
             an approximation implemented in Cython.
           highlights:
             - text: 1000× speedup
-              tags: [image-processing, cython]
+              tags: [ai-ml, image-processing, cython]
 
     - id: background-removal-models
       priority: 1

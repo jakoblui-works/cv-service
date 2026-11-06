@@ -81,6 +81,7 @@
       testing,
       llm-document-extraction,
       evaluation-regression-testing,
+      agentic-coding,
       python,
       typescript,
       production-systems,
