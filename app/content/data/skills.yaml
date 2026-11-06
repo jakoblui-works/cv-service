@@ -85,6 +85,7 @@
     - { id: computer-vision, label: Computer Vision, priority: 3 }
     - { id: image-processing, label: Image Processing, priority: 2 }
     - { id: llm-document-extraction, label: LLM-Based Document Extraction, priority: 3 }
+    - { id: agentic-coding, label: Agentic Coding, priority: 2 }
     - { id: evaluation-regression-testing, label: Evaluation & Regression Testing, priority: 2 }
     - { id: cython, label: Cython, priority: 1 }
     - { id: machine-learning, label: Machine Learning }
