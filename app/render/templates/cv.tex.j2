@@ -108,4 +108,21 @@
   }
 
 \BLOCK{endfor}
+\BLOCK{if selection.static.volunteer}
+\section{VOLUNTEER WORK}
+
+\BLOCK{for volunteer in selection.static.volunteer}
+\companyblock
+  {\VAR{volunteer.organisation}}
+  {\VAR{volunteer.unit}}
+  {%
+    \role{\VAR{volunteer.role}}{\VAR{volunteer.start_year}--\VAR{volunteer.end_year or "Present"}}
+  }
+  {\VAR{volunteer.location}}
+  {%
+    \companysummary{\VAR{volunteer.description}}
+  }
+
+\BLOCK{endfor}
+\BLOCK{endif}
 \end{document}

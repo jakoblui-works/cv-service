@@ -1,7 +1,7 @@
 import pytest
 
 from app.content.loader import load_content
-from app.content.models import Job, Static, Title
+from app.content.models import Job, Static, Title, Volunteer
 from app.content.selection.models import SelectedBullet, SelectedJob, Selection, SkillLine
 from app.content.selection.pipeline import select
 from app.content.selection.request import SelectionRequest
@@ -89,3 +89,23 @@ def test_real_content_renders_for_every_title(title_id: str) -> None:
 
     assert source.startswith(r"\documentclass")
     assert source.rstrip().endswith(r"\end{document}")
+
+
+def test_volunteer_section_appears_only_with_entries(selection: Selection) -> None:
+    assert "VOLUNTEER WORK" not in render_cv(selection, CONTACT)
+
+    volunteer = Volunteer(
+        organisation="Test University",
+        unit="Student Council",
+        role="Chair & Member",
+        location="Testville",
+        start_year=2020,
+        end_year=2021,
+        description="Represented students.",
+    )
+    static = selection.static.model_copy(update={"volunteer": [volunteer]})
+    source = render_cv(selection.model_copy(update={"static": static}), CONTACT)
+
+    assert "VOLUNTEER WORK" in source
+    assert r"Chair \& Member" in source
+    assert "Represented students." in source

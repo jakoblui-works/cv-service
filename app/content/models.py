@@ -50,12 +50,23 @@ class Education(ContentModel):
     description: str
 
 
+class Volunteer(ContentModel):
+    organisation: str
+    unit: str
+    role: str
+    location: str
+    start_year: int
+    end_year: int | None = None
+    description: str
+
+
 class Static(ContentModel):
     name: str
     city: str
     website: str
     projects: list[Project]
     education: list[Education]
+    volunteer: list[Volunteer] = []
 
 
 class Skill(ContentModel):

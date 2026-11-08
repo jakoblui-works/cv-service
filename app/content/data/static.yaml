@@ -59,3 +59,25 @@ education:
     start_year: 2018
     end_year: 2019
     description: Admitted to the BA programme; completed most of the first-year coursework before leaving for family reasons.
+
+volunteer:
+  - organisation: University of Copenhagen
+    unit: Study Board for Mathematics and Computer Science
+    role: Study Board Member
+    location: Copenhagen, Denmark
+    start_year: 2021
+    end_year: 2023
+    description: >-
+      Reviewed curriculum changes, dispensation requests and programme development for the Mathematics and Computer
+      Science departments. Served one term for each department.
+
+  - organisation: University of Copenhagen
+    unit: Department of Computer Science
+    role: President of the Computer Science Student Council
+    location: Copenhagen, Denmark
+    start_year: 2021
+    end_year: 2022
+    description: >-
+      Represented computer science students in meetings with department management, organised events to get
+      students to vote in the university elections, reviewed applicants to the master's programmes as the student
+      representative, and served on the hiring committee for a new Head of Department.
