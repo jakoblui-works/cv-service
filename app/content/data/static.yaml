@@ -29,7 +29,7 @@ projects:
     location: Online
     start_year: 2026
     description: >-
-      Self-hosted platform for small projects: infrastructure as code with Terraform and Ansible, Docker Compose
+      Self-hosted platform for small projects and a testbed for agentic development workflows: infrastructure as code with Terraform and Ansible, Docker Compose
       on DigitalOcean, GitHub Actions CI/CD with deploy results reported on each commit, a thin API gateway, a
       Taskiq worker and shared service templates.
 
